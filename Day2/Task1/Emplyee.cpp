@@ -5,12 +5,11 @@ using namespace std;
 
 int main()
 {
-    Employee e1 = Employee("Haseeb", "mardan");
-    Employee e2 = Employee("Bilal", "Malakand");
-    Employee e3 = Employee("Muhammad Hammad", "Pindi");
 
-    e1.ShowMembers();
+    Employee* Salaried_Emp_Ptr = new Salaried_Emp("Haseeb","Mardan",300);
+    Salaried_Emp_Ptr ->calculateSalary();
 
-    Employee* objPtr = new Salaried_Emp("Haseeb","Mardan",300);
-    objPtr ->calculateSalary();
+
+    Employee* Hourly_Emp_Ptr = new Hourly_Emp("Muhammad Bilal", "Malakan", 8*30, 34);
+    Hourly_Emp_Ptr -> calculateSalary();
 }
