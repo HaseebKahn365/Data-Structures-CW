@@ -1,12 +1,15 @@
 #include <iostream>
 #include <vector>
-#include <cstdlib>
-#include <ctime>
+#include <stdlib.h>
+// #include <ctime>
+#include <windows.h>
+#include <conio.h>
+// #include <unistd.h>
 
 using namespace std;
 
-int noOfXPoints = 10;
-int noOfYPoints = 10;
+int noOfXPoints = 20;
+int noOfYPoints = 20;
 
 class Point {
 public:
@@ -105,21 +108,25 @@ void displayRemaining() {
         }
     }
 
-    cout<<"\n\n"; // Add some space between each iteration
 }
 
 void checkCollision() {
     for (int i = 0; i < carList.size(); i++) {
         for (int j = i + 1; j < carList.size(); j++) {// 
             if (carList[i].position == carList[j].position) {
-                cout << "Collision detected at position: " << carList[i].position.xCord << ", " << carList[i].position.yCord << endl;
-                cout << "Number of cars collided: 2" << endl;
+             
                 carList.erase(carList.begin() + j);
                 carList.erase(carList.begin() + i);
+                //clear scrren 
+                        // add a 100 millisecond delay
+
+                Sleep(500);        
+                system("cls");
+                
 
                 displayRemaining();
                 
-                cout<<"\nExiting the program as collision detected\n";
+                
 
                 exit(0);
                 return; // Exit after detecting collision
@@ -135,8 +142,11 @@ void randomizeCars() {
             carList[j].changeDirection(rand() % 4 + 1);
         }
         checkCollision();
+        // add a 100 millisecond delay
+        Sleep(500);
+        system("cls");
         displayRemaining();
-        cout<<"Iteration "<<i+1<<"\n\n"; // Add some space between each iteration
+        
     }
 }
 
