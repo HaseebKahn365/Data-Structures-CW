@@ -9,11 +9,11 @@ int fib(int n);
 int global[5] ={-1,-1,-1,-1,-1};
 
 int main(){
-    // int lim, ans;
-    // cout<<"Please enter the limit of the fab: "<<endl;
-    // cin>>lim;
-    // ans = fib(lim); 
-    // cout<<"The answer is: "<<ans;
+    int lim, ans;
+    cout<<"Please enter the limit of the fab: "<<endl;
+    cin>>lim;
+    ans = fib(lim); 
+    cout<<"The answer is: "<<ans;
 
     
 //code for fibonacci series
@@ -42,39 +42,39 @@ cout<<"The result is: "<<result<<endl;
 
 }
 
-int fib(int n){
+// int fib(int n){
 
-    if(n<=1){
-        return n;
-    }
+//     if(n<=1){
+//         return n;
+//     }
 
     
 
-    global[0] = 0;
-    global[1] = 1;
+//     global[0] = 0;
+//     global[1] = 1;
 
-    for(int i=2; i<=n; i++){
-        global[i] = global[i-2] + global[i-1];
-    }
+//     for(int i=2; i<=n; i++){
+//         global[i] = global[i-2] + global[i-1];
+//     }
 
-    return global[n];
-}
+//     return global[n];
+// }
 
 
 
 
 //now using recursion
 
-// int fib(int n){
-//     if(n==0){ 
-//         return 0;
-//     }
-//     else if(n==1){
-//         return 1;
-//     }
-//     else{
-//         return fib(n-2) + fib(n-1);
-//     }
-// }
+int fib(int n){
+    if(n==0){ 
+        return 0;
+    }
+    else if(n==1){
+        return 1;
+    }
+    else{
+        return fib(n-2) + fib(n-1);
+    }
+}
 
 //using the optimal approach
