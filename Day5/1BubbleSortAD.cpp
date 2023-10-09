@@ -32,6 +32,7 @@ void BubbleSort(int Arr[], int n){
             if(Arr [j] >  Arr [j+1]){
 
                 //Swapping the elements
+                //look for the bigger element and move it to the right.
 
                 temp = Arr [j];
                 Arr [j] = Arr [j+1];
