@@ -25,7 +25,7 @@ int main()
 
     auto differenceTime = duration_cast<microseconds>(endTime - startTime);
 
-    cout<<"\nThe time taken (Microseconds) in iterative method was: "<<differenceTime.count();
+    cout<<"\nThe time taken (micrososecond) in iterative method was: "<<differenceTime.count();
 
     cout << "\nThe following is done through recursion" << endl;
 
@@ -35,13 +35,13 @@ int main()
 
     auto endTime2 = high_resolution_clock::now();
 
-    auto differenceTime2 = duration_cast<microseconds>(endTime2 - startTime2);
+    auto differenceTime2 = duration_cast<seconds>(endTime2 - startTime2);
 
-    cout<<"\nThe time taken (Microseconds) in recursive method was: "<<differenceTime2.count();
+    cout<<"\nThe time taken (seconds) in recursive method was: "<<differenceTime2.count();
 
 }
 
-int a = 2, b = 2, c = 3, d;
+long long int a = 2, b = 2, c = 3, d;
 
 void fib(int lim)
 {
@@ -61,7 +61,7 @@ void fib(int lim)
     }
 }
 
-int recursion(int n)
+long long int recursion(long long int n)
 {
 
     if (n == 0)
@@ -82,7 +82,7 @@ int recursion(int n)
 void recFib(int lim)
 {
 
-    for (int i = 0; i < lim; i++){
+    for (long long int i = 0; i < lim; i++){
         cout << recursion(i) << ", ";
     }
 }
