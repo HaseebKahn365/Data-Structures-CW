@@ -1,20 +1,15 @@
-Item inserted!
-Item inserted!
-Item inserted!
-Item inserted!
-Item inserted!
-Queue overflow!
-
-Item with age: 23 and gpa: 2.5
-
-Item with age: 24 and gpa: 2.7
-
-Item with age: 25 and gpa: 2.9
-
-Item with age: 26 and gpa: 3.1
-
-Item with age: 27 and gpa: 3.3
-Sorry cannot deque because the queue is empty
-Sorry cannot deque because the queue is empty
-
-Program has ended!
+Item inserted at front
+Item inserted at front
+Item inserted at rear
+Item inserted at rear
+Items after insertion:
+Item with age: 30and gpa: 3.7
+Item with age: 25and gpa: 3.5
+Item with age: 20and gpa: 3.2
+Item with age: 28and gpa: 3.4
+Sorry, cannot dequeue because the DEQueue is empty
+Item inserted at front
+Item inserted at rear
+Items after more insertion:
+Item with age: 22and gpa: 3.3
+Item with age: 35and gpa: 3.8
