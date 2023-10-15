@@ -14,7 +14,7 @@ void insertionSort(int arr[], int len){
         j=i;
         temp = arr[i];
         
-        while(j>0 && temp> arr[j-1]){
+        while(j>0 && temp>arr[j-1]){
 
             arr[j] = arr[j -1];
 

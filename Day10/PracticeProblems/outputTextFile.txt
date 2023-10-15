@@ -1,8 +1,2 @@
-Item added Displaying item: Age = 24 GPA = 2
-Item added Displaying item: Age = 25 GPA = 2
-Item added Displaying item: Age = 26 GPA = 2
-Item added Displaying item: Age = 27 GPA = 2
- Displaying item: Age = 24 GPA = 2
- Displaying item: Age = 25 GPA = 2
- Displaying item: Age = 26 GPA = 2
- Displaying item: Age = 27 GPA = 2
+The sorted elements using the insertion with for loop sort are: 
+3     4     5     7     9     
