@@ -1,7 +1,8 @@
-
-Stack Overflow!
-Displaying item: Age = 36 GPA = 3
-Displaying item: Age = 35 GPA = 3
-Displaying item: Age = 34 GPA = 2
-
-No Items to pop!
+Item added Displaying item: Age = 24 GPA = 2
+Item added Displaying item: Age = 25 GPA = 2
+Item added Displaying item: Age = 26 GPA = 2
+Item added Displaying item: Age = 27 GPA = 2
+ Displaying item: Age = 24 GPA = 2
+ Displaying item: Age = 25 GPA = 2
+ Displaying item: Age = 26 GPA = 2
+ Displaying item: Age = 27 GPA = 2
