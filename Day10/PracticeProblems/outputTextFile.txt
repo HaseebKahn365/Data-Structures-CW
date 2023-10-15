@@ -1,2 +1,17 @@
-The sorted elements using the insertion with for loop sort are: 
-3     4     5     7     9     
+inserting at count: 0
+inserting at count: 1
+inserting at count: 2
+inserting at count: 3
+inserting at count: 4
+Linked list overload!
+
+Item with age: 27gpa: 3.2
+
+Item with age: 26gpa: 2.9
+
+Item with age: 25gpa: 2.6
+
+Item with age: 24gpa: 2.3
+
+Item with age: 23gpa: 2
+Empty list!
