@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 const int capacity = 5;
-
+//there should not be a limited sized linked
 class item{
     int age;
     float gpa;

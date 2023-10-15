@@ -67,6 +67,8 @@ int main()
     Q -> enqueue (new item(25, 2.13));
     Q -> enqueue (new item(26, 2.13));
     Q -> enqueue (new item(27, 2.13));
+      Q -> enqueue (new item(27, 2.13));
+        Q -> enqueue (new item(27, 2.13));
 
     for(int i = 0; i<5; i++){            
         if( !Q-> isEmpty() ){
