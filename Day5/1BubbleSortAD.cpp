@@ -28,6 +28,7 @@ void BubbleSort(int Arr[], int n){
 
         int temp;
         for(int j = 0; j<n-1-i; j++){
+            //This is because the last item of the current iteration gets sorted.
 
             if(Arr [j] >  Arr [j+1]){
 
@@ -56,9 +57,19 @@ void BubbleSort(int Arr[], int n){
 
 int main(){
 
-    int Array [5] ={8,5,7,3,2};
+        freopen("1out.txt","w", stdout);
+        
+        cout<<"Hi there this is the new line that..."<<endl;
+        
+        int inputNum;
 
-    BubbleSort(Array, 5);
+        cin>>inputNum;
+
+        cout<<"\n The number that you just entered was: "<<inputNum<<endl;
+
+        int Array [5] ={8,5,7,3,2};
+
+        BubbleSort(Array, 5);
 
     cout<<"The sorted modified array is:"<<endl;
 
@@ -73,6 +84,9 @@ int main(){
     for(int i = 0; i<5; i++) {
         cout<<Array[i]<<endl;
     }
+
+    cout<<"This is the new modification that is made"<<endl;
+    cout<<"This is pretty fantastic"<<endl;
 
 
 
