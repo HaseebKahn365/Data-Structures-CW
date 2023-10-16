@@ -75,7 +75,7 @@ class linkedList{
 
 int main()
 {
-        freopen("out.txt","w", stdout);
+        // freopen("out.txt","w", stdout);
 
 
     linkedList* myList = new linkedList();
