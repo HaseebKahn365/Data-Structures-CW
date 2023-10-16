@@ -72,37 +72,16 @@ class linkedList{
         }
     }
 
-    void RemoveN(int n) {
-    item* current = head;
-    item* prev = nullptr;
-
-    while (current != NULL) {
-        if (current->age == n) {
-            cout << "Item found and removed:" << endl;
-            current->display();
-
-            if (prev == NULL) {
-                // If the item to remove is the first item, update the head pointer.
-                head = current->Next;
-            } else {
-                // Update the previous item's Next pointer to skip the removed item.
-                prev->Next = current->Next;
+    item* FindN(int n){
+        item* temp = head;
+        while(temp != NULL){
+            if(temp -> age == n){
+                cout<<"The item has been found:\n";
+                return temp;
             }
-
-            // Deallocate memory for the removed item.
-            delete current;
-
-            count--;
-            return; // Exit the function after removing the first matching item.
+            temp= temp -> Next;
         }
-
-        prev = current;
-        current = current->Next;
     }
-
-    cout << "Could not find the item!" << endl;
-}
-
 
 };
 
@@ -116,7 +95,7 @@ int main()
       myList->insertFirst(new item(27, 3.5));
       myList->insertFirst(new item(25, 3.8));
 
-    myList -> RemoveN(25);
+    myList -> FindN(25) ->display();
     cout<<"\nProgram ended";
 
     
