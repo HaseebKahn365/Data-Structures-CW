@@ -57,7 +57,7 @@ class Queue{
 
 int main()
 {
-    freopen("outputTextFile.txt", "w", stdout);
+    freopen("outputTextFile.txt", "a", stdout);
     Queue* Q = new Queue();
 
     for(int i=0; i<6; i++){

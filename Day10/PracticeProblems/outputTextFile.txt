@@ -1,15 +1,62 @@
-Item inserted at front
-Item inserted at front
-Item inserted at rear
-Item inserted at rear
-Items after insertion:
-Item with age: 30and gpa: 3.7
-Item with age: 25and gpa: 3.5
-Item with age: 20and gpa: 3.2
-Item with age: 28and gpa: 3.4
-Sorry, cannot dequeue because the DEQueue is empty
-Item inserted at front
-Item inserted at rear
-Items after more insertion:
-Item with age: 22and gpa: 3.3
-Item with age: 35and gpa: 3.8
+Item inserted
+Item inserted
+Item inserted
+Item inserted
+Item inserted
+Queue Overflow!
+
+Item with age: 23gpa: 2.5
+
+Item with age: 24gpa: 2.7
+
+Item with age: 25gpa: 2.9
+
+Item with age: 26gpa: 3.1
+reseting both front and rear:
+
+Item with age: 27gpa: 3.3
+Queue is empty!
+Queue is empty!
+
+Program has ended!
+Item inserted
+Item inserted
+Item inserted
+Item inserted
+Item inserted
+Queue Overflow!
+
+Item with age: 23gpa: 2.5
+
+Item with age: 24gpa: 2.7
+
+Item with age: 25gpa: 2.9
+
+Item with age: 26gpa: 3.1
+reseting both front and rear:
+
+Item with age: 27gpa: 3.3
+Queue is empty!
+Queue is empty!
+
+Program has ended!Item inserted
+Item inserted
+Item inserted
+Item inserted
+Item inserted
+Queue Overflow!
+
+Item with age: 23gpa: 2.5
+
+Item with age: 24gpa: 2.7
+
+Item with age: 25gpa: 2.9
+
+Item with age: 26gpa: 3.1
+reseting both front and rear:
+
+Item with age: 27gpa: 3.3
+Queue is empty!
+Queue is empty!
+
+Program has ended!

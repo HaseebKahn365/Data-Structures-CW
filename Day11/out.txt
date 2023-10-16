@@ -3,7 +3,9 @@ Inserting no.2 Item:
 Inserting no.3 Item: 
 Inserting no.4 Item: 
 Inserting no.5 Item: 
-The item has been found:
 
-Displaying: age: 25 gpa: 3.8
-Program ended
+Displaying: age: 25 gpa: 3.5
+Displaying: age: 25 gpa: 3.5
+Displaying: age: 25 gpa: 3.5
+Displaying: age: 24 gpa: 3.5
+Displaying: age: 23 gpa: 3.5
