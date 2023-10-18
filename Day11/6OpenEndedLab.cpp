@@ -175,6 +175,8 @@ public:
 
 int main()
 {
+    freopen("out.txt","w", stdout);
+
     linkedList list;
     item *newItem = new item(21, 3.1);
 
