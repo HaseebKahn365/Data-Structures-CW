@@ -67,6 +67,7 @@ public:
 
     item *removeFirst()
     {
+        cout<<"count: "<<count;
         if (count == 0)
         {
             cout << "You have not even inserted any items! Error: 100" << endl;
@@ -159,8 +160,7 @@ public:
         item *curr = head;
         for (int i = 0; i < count; i++)
         {
-            // cout << "\n\nPrinting the current in mulitsearch: " << curr;
-            // curr->display();
+            
             if (curr->data == d)
             {
                 item *temp = new item(curr->data);
@@ -181,7 +181,7 @@ int main()
     freopen("out.txt", "w", stdout);
     cout << "This is the Start of the program:" << endl;
     DEQLinkedList *DEQ = new DEQLinkedList();
-    DEQ->printState();
+    // DEQ->printState();
     // DEQ->insertFirst(new item(21));
     // DEQ->printState();
     // DEQ->insertFirst(new item(22));
@@ -195,10 +195,10 @@ int main()
     // DEQ->removeFirst()->display();
     // DEQ->removeFirst()->display();
     // test 2:
-    // DEQ->insertLast(new item(23));
-    // DEQ->printState();
-    // DEQ->removeLast();
-    // DEQ->printState();
+    DEQ->insertLast(new item(23));
+    DEQ->printState();
+    DEQ->removeLast();
+    DEQ->printState();
 
     // test3: display test:
 
@@ -218,6 +218,6 @@ int main()
     // DEQ->searchItem(23)->display();
     cout << "\n\nSearching for mulitple 23\n\n";
     DEQ->searchMultiple(23);
-    cout << "\n\n\nThe program has ended";
+    cout << "\n\n\nThe program has ended\n\n this is the new output\n";
     return 0;
 }
