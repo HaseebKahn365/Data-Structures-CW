@@ -195,29 +195,27 @@ int main()
     // DEQ->removeFirst()->display();
     // DEQ->removeFirst()->display();
     // test 2:
-    DEQ->insertLast(new item(23));
-    DEQ->printState();
-    DEQ->removeLast();
-    DEQ->printState();
+    // DEQ->insertLast(new item(23));
+    // DEQ->printState();
+    // DEQ->removeLast();
+    // DEQ->printState();
 
     // test3: display test:
+    
 
     DEQ->insertFirst(new item(21));
-    DEQ->printState();
     DEQ->insertFirst(new item(22));
-    DEQ->printState();
     DEQ->insertFirst(new item(23));
+    DEQ->insertFirst(new item(24));
     DEQ->insertFirst(new item(23));
-    DEQ->insertFirst(new item(23));
-    DEQ->insertFirst(new item(23));
-    DEQ->insertFirst(new item(23));
+    DEQ->insertFirst(new item(26));
+    DEQ->insertFirst(new item(27));
     DEQ->insertFirst(new item(23));
     DEQ->printState();
     DEQ->displayAll();
 
-    // DEQ->searchItem(23)->display();
+    // // DEQ->searchItem(23)->display();
     cout << "\n\nSearching for mulitple 23\n\n";
     DEQ->searchMultiple(23);
-    cout << "\n\n\nThe program has ended\n\n this is the new output\n";
     return 0;
 }
