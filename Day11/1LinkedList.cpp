@@ -73,6 +73,9 @@ int main()
       myList->insertFirst(new item(25, 3.5));
       myList->insertFirst(new item(25, 3.5));
       myList->insertFirst(new item(25, 3.5));
+       myList->insertFirst(new item(25, 3.5));
+      myList->insertFirst(new item(25, 3.5));
+
 
       myList -> remove() ->display();
       myList->remove()-> display();

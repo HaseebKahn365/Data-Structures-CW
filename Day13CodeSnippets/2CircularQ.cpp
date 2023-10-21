@@ -47,6 +47,7 @@ class Queue{
     }
 
     item* dequeue(){
+         cout<<"Dequeue Attempted!";
         if(isEmpty()){
             cout<<"Queue is empty"<<endl;
             return NULL;
@@ -97,6 +98,18 @@ int main()
     newQ-> dequeue()->display();
     newQ-> dequeue()->display();
     item* temp = newQ-> dequeue();
+    if(temp == NULL){
+        cout<<"Invalid Dequeue";
+    }
+    temp = newQ-> dequeue();
+    if(temp == NULL){
+        cout<<"Invalid Dequeue";
+    }
+    temp = newQ-> dequeue();
+    if(temp == NULL){
+        cout<<"Invalid Dequeue";
+    }
+    temp = newQ-> dequeue();
     if(temp == NULL){
         cout<<"Invalid Dequeue";
     }
