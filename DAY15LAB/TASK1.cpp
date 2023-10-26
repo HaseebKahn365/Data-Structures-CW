@@ -1,6 +1,4 @@
 #include<iostream>
-#include<chrono>
-using namespace std::chrono;
 using namespace std;
 
 class item{
@@ -26,11 +24,11 @@ class DEQLinkedList{
     public:
 
     void insertFirst(item* i){
-        if(head == NULL){// cout<<"First item inserted on front!"<<endl;
+        if(head == NULL){ cout<<"First item inserted on front!"<<endl;
             head = i;
             tail = i;
             count++;
-        }else{//cout<<"Item inserted on the front!"<<endl;
+        }else{cout<<"Item inserted on the front!"<<endl;
             i->next = head;
             head->previous = i;
             head = i;
@@ -43,9 +41,8 @@ class DEQLinkedList{
         cur->next->data = tempData;
     }
 
-//!------------> Bubble sorting algorith <------------------!//
    void sortTheListBubbly() {
-    cout << "\nSorting the list with bubble sort\n";
+    cout << "\nSorting the list\n";
     if (head == nullptr || head->next == nullptr) return;
     
     item* curr;
@@ -54,7 +51,7 @@ class DEQLinkedList{
     for (int i = 0; i < count - 1; i++) {
         curr = head;
         while (curr->next != lastUnsorted) {
-            if(curr->previous->data > curr->data){
+            if (curr->data > curr->next->data) {
                 swapData(curr);
             }
             curr = curr->next;
@@ -63,54 +60,14 @@ class DEQLinkedList{
     }
 }
 
-//!------------> Insertion sorting algorith <------------------!//
-
-    void insertionSort(item* curr){
-        while(curr->previous != NULL){
-            if(curr->previous->data > curr->data){
-                swapData(curr->previous); 
-            }
-            curr= curr->previous;
-        }
-    }
-
-
-    void sortTheListInsertly(){
-        cout<<"\nSorting the list insertly (duration: microseconds)\n";
-        cout<<"For N=10, N=100, N=1000\n";
-         auto start_time = high_resolution_clock::now();
-
-    // Performing the insertion sort
-
-
-     if(head == NULL || head->next == NULL) return;
-
-        item* curr = head->next;
-        while(curr != NULL){
-            insertionSort(curr);
-            curr=curr->next;
-        }
-
-
-    // Get the current time (end time)
-    auto end_time = high_resolution_clock::now();
-
-    // Calculate the time difference in microseconds
-    auto duration = duration_cast<microseconds>(end_time - start_time);
-
-    // Print the time difference
-    cout<< duration.count() << std::endl;
-       
-    }
-
 
 
     void insertLast(item* i){
-        if(tail== NULL){//cout<<"First item inserted on the rear!"<<endl;
+        if(tail== NULL){cout<<"First item inserted on the rear!"<<endl;
             head = i;
             tail = i;
             count++;
-        }else{//cout<<"item is inserted at the last!"<<endl;
+        }else{cout<<"item is inserted at the last!"<<endl;
             tail->next = i;
             i->previous = tail;
             tail = i;
@@ -176,29 +133,6 @@ class DEQLinkedList{
     }
 };
 
-int randGenerator(){
-    srand(static_cast<unsigned>(time(0)));
-    return rand() % 10000 + 1;
-}
-void automatedTestForInsertion(DEQLinkedList* &d){
-    for(int i=0; i<10; i++){
-        d->insertFirst( new item(randGenerator()) );
-    }
-    d->sortTheListInsertly();
-
-    for(int i=0; i<100; i++){
-        d->insertFirst( new item(randGenerator()) );
-    }
-    d->sortTheListInsertly();
-
-    for(int i=0; i<1000; i++){
-        d->insertFirst( new item(randGenerator()) );
-    }
-    d->sortTheListInsertly();
-
-    
-}
-
 
 
 int main()
@@ -206,13 +140,20 @@ int main()
     freopen("out.txt", "w", stdout);
     cout<<"This is the Start of the program:"<<endl;
     DEQLinkedList* DEQ = new DEQLinkedList();
-    
-    automatedTestForInsertion(DEQ);
+    DEQ->insertFirst(new item(21));
+    DEQ->insertLast(new item(25));
+    DEQ->insertFirst(new item(31));
+    DEQ->insertFirst(new item(32));
+    DEQ->insertFirst(new item(5));
+    DEQ->insertFirst(new item(7));
+    DEQ->insertFirst(new item(39));
+    DEQ->insertFirst(new item(2));
 
-    DEQ->sortTheListInsertly();
+    DEQ->sortTheListBubbly();
 
 
-    
+    DEQ->printState();
+    DEQ->displayAll();
 
 
     return 0;
