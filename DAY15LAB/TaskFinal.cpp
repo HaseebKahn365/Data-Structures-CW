@@ -43,11 +43,7 @@ class DEQLinkedList{
         cur->next->data = tempData;
     }
 
-     void swapDataInsertion(item* p1, item* p2){ //this is for bubble sort:
-        int tempData = p1->data;
-        p1->data = p2->data;
-        p2->data = tempData;
-    }
+    
 
 //!------------> Bubble sorting algorith <------------------!//
    void sortTheListBubbly() {
@@ -176,7 +172,7 @@ class DEQLinkedList{
     void displayAll(){
         if(head!=NULL){
         item* curr= head; int i=1;
-                    cout<<"item no. 1"<<endl;
+        cout<<"item no. 1"<<endl;
         curr->display();
 
         while(curr->next != NULL){
@@ -185,6 +181,7 @@ class DEQLinkedList{
             curr->display();
             i++;
         } 
+        cout<<"\n\n";
         }else{
             cout<<"\nCannot display data of an empty list\n";
         }
@@ -212,17 +209,17 @@ void automatedTestForInsertion(DEQLinkedList* &d){
     }
     d->sortTheListInsertly();
 
-    for(int i=0; i<100; i++){
+    for(int i=0; i<90; i++){
         d->insertFirst( new item(randGenerator()) );
     }
     d->sortTheListInsertly();
 
-    for(int i=0; i<1000; i++){
+    for(int i=0; i<900; i++){
         d->insertFirst( new item(randGenerator()) );
     }
     d->sortTheListInsertly();
 
-    for(int i=0; i<10000; i++){
+    for(int i=0; i<9000; i++){
         d->insertFirst( new item(randGenerator()) );
     }
     d->sortTheListInsertly();
@@ -234,24 +231,24 @@ void automatedTestForInsertion(DEQLinkedList* &d){
 void automatedTestForBubble(DEQLinkedList* &d){
 
         cout<<"\n\n\nSorting the list bubbly (duration: microseconds)\n";
-        cout<<"For N=10, N=100, N=1000\n";
+        cout<<"For N=10, N=100, N=1000, N=10,000\n";
 
     for(int i=0; i<10; i++){
         d->insertFirst( new item(randGenerator()) );
     }
     d->sortTheListBubbly();
 
-    for(int i=0; i<100; i++){
+    for(int i=0; i<90; i++){
         d->insertFirst( new item(randGenerator()) );
     }
     d->sortTheListBubbly();
 
-    for(int i=0; i<1000; i++){
+    for(int i=0; i<900; i++){
         d->insertFirst( new item(randGenerator()) );
     }
     d->sortTheListBubbly();
 
-     for(int i=0; i<10000; i++){
+     for(int i=0; i<9000; i++){
         d->insertFirst( new item(randGenerator()) );
     }
     d->sortTheListBubbly();
@@ -267,13 +264,13 @@ int main()
     freopen("out.txt", "w", stdout);
     cout<<"This is the Start of the program:"<<endl;
 
-    // DEQLinkedList* DEQ2 = new DEQLinkedList();
-    // automatedTestForBubble(DEQ2);
+    DEQLinkedList* DEQ2 = new DEQLinkedList();
+    automatedTestForBubble(DEQ2);
     // DEQ2->displayAll();
     
     DEQLinkedList* DEQ1 = new DEQLinkedList();
     automatedTestForInsertion(DEQ1);
-    DEQ1->displayAll();
+    // DEQ1->displayAll();
   
 
 
