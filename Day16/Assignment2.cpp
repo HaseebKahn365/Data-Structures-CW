@@ -10,20 +10,20 @@ class Customer{
     Customer(int d, int i): id(d), items(i){}
 
     void display(){
-        cout<<"Customer with id: "<<id<<endl;
-        cout<<"items : "<<items<<endl;
+        cout<<id<<"  ";
     }
 
 
 
 };
 
+
 class SinglyLinkedList{
     Customer* head= NULL;
     Customer* tail= NULL;
-    int weight = 0;
     int count = 0;
     public:
+    int weight = 0;
 
 
 
@@ -57,18 +57,16 @@ class SinglyLinkedList{
 
     void displayAll(){
         if(head!=NULL){
-        Customer* curr= head; int i=1;
-                    cout<<"Customer no. 1"<<endl;
+        Customer* curr= head; 
         curr->display();
 
         while(curr->next != NULL){
             curr= curr->next;
-            cout<<"Customer no. "<<i+1<<endl;
             curr->display();
-            i++;
+            
         } 
         }else{
-            cout<<"\nCannot display data of an empty list\n";
+            cout<<"Empty "<<endl;
         }
        
     }
@@ -84,20 +82,98 @@ class SinglyLinkedList{
 
 
 
+class Store{
+    SinglyLinkedList* line1 = new SinglyLinkedList();
+    SinglyLinkedList* line2 = new SinglyLinkedList();
+    SinglyLinkedList* line3 = new SinglyLinkedList();
+    public:
+
+    void printStoreState(){
+        cout<<"Line 1 wieght: "<<line1->weight<<endl;
+        cout<<"Line 2 wieght: "<<line2->weight<<endl;
+        cout<<"Line 3 wieght: "<<line3->weight<<endl;
+
+    }
+
+    int calculateMinLine(){
+       if(line1->weight<= line2->weight && line1->weight<= line3->weight) {return 1;}
+        else if(line2->weight<=line1->weight && line2->weight <= line3->weight) {return 2;}
+        else{ return 3;};
+    }
+
+
+    void JoinALine(Customer* i){
+        printStoreState();
+        int bestLine = calculateMinLine();
+        cout<<"The best line is: "<<bestLine<<endl;
+
+        switch (bestLine)
+        {
+        case 1 :
+        line1 -> insertLast(i);
+        break;
+
+        case 2 :
+        line2 -> insertLast(i);
+        break;
+
+        case 3 :
+        line3 -> insertLast(i);
+        break;
+        
+        default:
+        cout<<"Something went wrong in choosing the best line";
+            break;
+        }
+    }
+
+    //!----------> PeekLines <---------!// 
+    //TODO:it will only show the statuses of the lines
+
+    void peekLines(){
+        cout<<"\nCustomer Line 1: "; 
+        line1->displayAll();
+        cout<<endl;
+
+        cout<<"\nCustomer Line 2: "; 
+        line2->displayAll();
+        cout<<endl;
+
+        cout<<"\nCustomer Line 3: "; 
+        line3->displayAll();
+        cout<<endl;
+
+    }
+
+
+
+    //!----------> CheckoutCustomers <---------!// --------->
+    //TODO:it will remove the first three customers from each line respectively
+    void checkOutCustomers(){
+        line1->removeFirst();
+        line2->removeFirst();
+        line3->removeFirst();
+    }
+
+};
+
+
+
 
 int main()
 {
-    // freopen("out.txt", "w", stdout);
-    SinglyLinkedList* list = new SinglyLinkedList();
-    list->insertLast(new Customer(1, 23));
-    list->insertLast(new Customer(2, 12));
-    list->insertLast(new Customer(3, 15));
-    list->insertLast(new Customer(4, 13));
-    list->printState();
-    list->removeFirst();
-    list->removeFirst();
-    list->removeFirst();
-    list->printState();
+    Store s1;
+    s1.JoinALine(new Customer(21, 10));
+    s1.JoinALine(new Customer(22, 10));
+    s1.JoinALine(new Customer(23, 10));
+    s1.JoinALine(new Customer(27, 10));
+    s1.JoinALine(new Customer(29, 100));
+
+    s1.peekLines();
+    s1.checkOutCustomers();
+    s1.peekLines();
+
+
 
     return 0;
 }
