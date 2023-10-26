@@ -21,8 +21,8 @@ class Customer{
 class SinglyLinkedList{
     Customer* head= NULL;
     Customer* tail= NULL;
-    int count = 0;
     public:
+    int count = 0;
     int weight = 0;
 
 
@@ -44,7 +44,7 @@ class SinglyLinkedList{
     void removeFirst(){
         if(count == 0){
             cout<<"You have not even inserted any Customers! Error: 100"<<endl;
-        }else{cout<<"Removed top!"<<endl;
+        }else{
             Customer* temp;
             temp= head;
             head = head->next;
@@ -88,12 +88,12 @@ class Store{
     SinglyLinkedList* line3 = new SinglyLinkedList();
     public:
 
-    void printStoreState(){
-        cout<<"Line 1 wieght: "<<line1->weight<<endl;
-        cout<<"Line 2 wieght: "<<line2->weight<<endl;
-        cout<<"Line 3 wieght: "<<line3->weight<<endl;
+    // void printStoreState(){
+    //     cout<<"Line 1 wieght: "<<line1->weight<<endl;
+    //     cout<<"Line 2 wieght: "<<line2->weight<<endl;
+    //     cout<<"Line 3 wieght: "<<line3->weight<<endl;
 
-    }
+    // }
 
     int calculateMinLine(){
        if(line1->weight<= line2->weight && line1->weight<= line3->weight) {return 1;}
@@ -103,9 +103,9 @@ class Store{
 
 
     void JoinALine(Customer* i){
-        printStoreState();
+        // printStoreState();
         int bestLine = calculateMinLine();
-        cout<<"The best line is: "<<bestLine<<endl;
+        // cout<<"The best line is: "<<bestLine<<endl;
 
         switch (bestLine)
         {
@@ -131,15 +131,15 @@ class Store{
     //TODO:it will only show the statuses of the lines
 
     void peekLines(){
-        cout<<"\nCustomer Line 1: "; 
+        cout<<"\n[burden: "<<line1->weight<<"]Customer Line 1: "; 
         line1->displayAll();
         cout<<endl;
 
-        cout<<"\nCustomer Line 2: "; 
+        cout<<"\n[burden: "<<line2->weight<<"]Customer Line 2: "; 
         line2->displayAll();
         cout<<endl;
 
-        cout<<"\nCustomer Line 3: "; 
+        cout<<"\n[burden: "<<line3->weight<<"]Customer Line 3: "; 
         line3->displayAll();
         cout<<endl;
 
@@ -150,9 +150,9 @@ class Store{
     //!----------> CheckoutCustomers <---------!// --------->
     //TODO:it will remove the first three customers from each line respectively
     void checkOutCustomers(){
-        line1->removeFirst();
-        line2->removeFirst();
-        line3->removeFirst();
+        if(line1->weight !=0)line1->removeFirst();
+        if(line2->weight !=0)line2->removeFirst();
+        if(line3->weight !=0)line3->removeFirst();
     }
 
 };
@@ -163,16 +163,43 @@ class Store{
 int main()
 {
     Store s1;
-    s1.JoinALine(new Customer(21, 10));
-    s1.JoinALine(new Customer(22, 10));
-    s1.JoinALine(new Customer(23, 10));
-    s1.JoinALine(new Customer(27, 10));
-    s1.JoinALine(new Customer(29, 100));
 
-    s1.peekLines();
-    s1.checkOutCustomers();
-    s1.peekLines();
+    int opCode;
+    do{
+        cout<<"\n\nPlease enter one of the following operations:\n";
+        cout<<"1)Join a Line\n";
+        cout<<"2)Look/Peek at all Lines\n";
+        cout<<"3)Checkout customers\n";
+        cout<<"You entered: "; cin>>opCode;
 
+        switch (opCode)
+        {
+        case 1:
+            cout<<"\nEnter customer id: ";
+            int id; cin>>id;
+            cout<<"Enter no. of items: ";
+            int items; cin>>items;
+            s1.JoinALine(new Customer(id, items));
+            cout<<"Person added!\n";
+            break;
+        
+        case 2:
+            cout<<"\nPeeking at store: \n";
+            s1.peekLines();
+            break;
+        case 3:
+            cout<<"\nChecking out customers\n";
+            s1.checkOutCustomers();
+
+            break;
+        
+        default:
+            cout<<"The Store application has ended! Bye\n\n";
+            exit(0);
+            break;
+        }
+
+    }while(opCode!=0);
 
 
     return 0;
