@@ -2,10 +2,10 @@
 using namespace std;
 
 class Customer{
-    int items;
     int id;
 
     public:
+    int items;
     Customer* next= NULL;
     Customer(int d, int i): id(d), items(i){}
 
@@ -21,6 +21,7 @@ class Customer{
 class SinglyLinkedList{
     Customer* head= NULL;
     Customer* tail= NULL;
+    int weight = 0;
     int count = 0;
     public:
 
@@ -30,10 +31,13 @@ class SinglyLinkedList{
         if(head == NULL || tail == NULL){
             head = tail = i;
             count++;
+            weight +=i->items;
         }else{
             tail->next = i;
             tail = i;
             count++;
+            weight +=i->items;
+
         }
     }
 
@@ -45,6 +49,7 @@ class SinglyLinkedList{
             temp= head;
             head = head->next;
             count--;
+            weight -= temp->items;
             delete temp;
            
         }
@@ -72,26 +77,27 @@ class SinglyLinkedList{
         cout<<"\n<-------Printing the state of the DEQ-----> \nHead: "<<head<<endl;
         cout<<"Tail: "<<tail<<endl;
         cout<<"Count: "<<count<<"\n\n";
+        cout<<"Total weight: "<<weight<<"\n\n";
+
     }
 };
+
+
 
 
 int main()
 {
     // freopen("out.txt", "w", stdout);
     SinglyLinkedList* list = new SinglyLinkedList();
-
     list->insertLast(new Customer(1, 23));
-    list->printState();
     list->insertLast(new Customer(2, 12));
     list->insertLast(new Customer(3, 15));
     list->insertLast(new Customer(4, 13));
+    list->printState();
     list->removeFirst();
-
+    list->removeFirst();
+    list->removeFirst();
     list->printState();
 
-    list->displayAll();
-
-    
     return 0;
 }
