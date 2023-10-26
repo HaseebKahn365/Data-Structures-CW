@@ -174,7 +174,48 @@ public:
         cout << "Total found items = " << foundItems->count << endl;
         foundItems->displayAll();
     }
-    
+
+    void removeMultiple(int d){
+        
+        item *curr = head;
+        for (int i = 0; i < count; i++)
+        {
+            
+            if(curr -> data == d){
+                cout<<"Deleting..."<<curr->data<<endl;
+                remove(curr);
+            }
+            curr = curr->next;
+        }
+
+    }
+
+    void remove(item* cur) {
+    if (head == nullptr) {
+        return; // Nothing to remove in an empty list
+    }
+
+    if (head == cur) {
+        head = head->next;
+        delete cur;
+        count--;
+        return;
+    }
+
+    item* temp = head;
+    while (temp->next != NULL && temp->next != cur) {
+        temp = temp->next;
+    }
+
+    if (temp->next == cur) {
+        temp->next = cur->next;
+        delete cur;
+        count--;
+    }
+}
+
+
+        
 };
 
 int main()
@@ -217,6 +258,6 @@ int main()
 
     // // DEQ->searchItem(23)->display();
     cout << "\n\nSearching for mulitple 23\n\n";
-    DEQ->searchMultiple(23);
+    DEQ->removeMultiple(23);
     return 0;
 }
