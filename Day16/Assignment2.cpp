@@ -195,6 +195,7 @@ int main()
         
         default:
             cout<<"The Store application has ended! Bye\n\n";
+            cout<<'\nTHis is the end';
             exit(0);
             break;
         }
