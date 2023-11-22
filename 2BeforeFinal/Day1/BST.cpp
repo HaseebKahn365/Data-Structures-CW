@@ -1,30 +1,30 @@
 #include<iostream>
 using namespace std;
 
-class item{
+class Node{
     public:
     int key;
     char data;
-    item* right = NULL;
-    item* left = NULL;
-    item(int k, char c): key(k), data(c){}
+    Node* right = NULL;
+    Node* left = NULL;
+    Node(int k, char c): key(k), data(c){}
     void display()
     {
-        cout<<"Item with key= "<<key<<" and data= "<<data<<endl;
+        cout<<"Node with key= "<<key<<" and data= "<<data<<endl;
     }
 
 };
 
 class BST{
-    item* root = NULL;
+    Node* root = NULL;
     public:
-  void insert(item* i) {
+  void insert(Node* i) {
     if (root == NULL) {
-        cout << "The new item has been made a root element" << endl;
+        cout << "The new Node has been made a root element" << endl;
         root = i;
     } else {
-        item *parent = NULL;
-        item *curr = root;
+        Node *parent = NULL;
+        Node *curr = root;
 
         while (1) {
             parent = curr;
@@ -58,9 +58,9 @@ class BST{
 }
 
 
-item* search(int key){
+Node* search(int key){
     // if(root == NULL) cout<<"Exception: The root is null"<<endl;
-    item *parent, *curr;
+    Node *parent, *curr;
     parent = curr = root;
     
     while(1){
@@ -94,11 +94,11 @@ item* search(int key){
 int main()
 {
     BST *tree = new BST();
-    tree->insert(new item(50, 'h'));
-    tree->insert(new item(75, 'a'));
-    tree->insert(new item(30, 's'));
-    tree->insert(new item(45, 's'));
-    tree->insert(new item(24, 's'));
+    tree->insert(new Node(50, 'h'));
+    tree->insert(new Node(75, 'a'));
+    tree->insert(new Node(30, 's'));
+    tree->insert(new Node(45, 's'));
+    tree->insert(new Node(24, 's'));
 
     tree->search(45)->display();
     tree->search(24)->display();
