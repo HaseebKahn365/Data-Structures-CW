@@ -1,6 +1,5 @@
 
 
-
 #include <iostream>
 #include <chrono>
 using namespace std;
@@ -78,7 +77,7 @@ void testInsertionAtTail(linkedList *myList)
     }
 
     auto end_time = high_resolution_clock::now();
-    
+
     auto duration = duration_cast<microseconds>(end_time - start_time);
     cout << duration.count() << std::endl;
 
@@ -95,12 +94,12 @@ void testInsertionAtTail(linkedList *myList)
     }
 
     end_time = high_resolution_clock::now();
-    
+
     duration = duration_cast<microseconds>(end_time - start_time);
     cout << duration.count() << std::endl;
 
     myList->clearList();
-    
+
     // similarly running the test for 50 items
 
     start_time = high_resolution_clock::now();
@@ -111,7 +110,7 @@ void testInsertionAtTail(linkedList *myList)
     }
 
     end_time = high_resolution_clock::now();
-    
+
     duration = duration_cast<microseconds>(end_time - start_time);
     cout << duration.count() << std::endl;
 
@@ -126,7 +125,7 @@ void testInsertionAtTail(linkedList *myList)
     }
 
     end_time = high_resolution_clock::now();
-    
+
     duration = duration_cast<microseconds>(end_time - start_time);
     cout << duration.count() << std::endl;
 
@@ -141,7 +140,7 @@ void testInsertionAtTail(linkedList *myList)
     }
 
     end_time = high_resolution_clock::now();
-    
+
     duration = duration_cast<microseconds>(end_time - start_time);
 
     cout << duration.count() << std::endl;
@@ -151,7 +150,6 @@ int main()
 {
     linkedList *myList = new linkedList();
 
-  
     cout << "Inserting elements in the list without the tail for 5, 20, 50, 100, 1000 items in the list" << endl;
 
     testInsertionAtTail(myList);
