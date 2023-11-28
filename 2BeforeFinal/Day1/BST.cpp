@@ -18,6 +18,9 @@ class Node{
 class BST{
     Node* root = NULL;
     public:
+    Node* getRoot (){
+        return root;
+    }
   void insert(Node* i) {
     if (root == NULL) {
         cout << "The new Node has been made a root element" << endl;
@@ -58,6 +61,20 @@ class BST{
 }
 
 
+
+//tree traversals in BST:
+//preorder: root-> left -> right
+
+void preOrder(Node *n){
+    if(n == NULL){
+        return;
+    }
+    cout<<n->key<<"\t";
+    preOrder(n->left);
+    preOrder(n->right);
+}
+
+
 Node* search(int key){
     // if(root == NULL) cout<<"Exception: The root is null"<<endl;
     Node *parent, *curr;
@@ -94,17 +111,26 @@ Node* search(int key){
 int main()
 {
     BST *tree = new BST();
-    tree->insert(new Node(50, 'h'));
-    tree->insert(new Node(75, 'a'));
-    tree->insert(new Node(30, 's'));
-    tree->insert(new Node(45, 's'));
-    tree->insert(new Node(24, 's'));
+    tree->insert(new Node(100, 'h'));
+    tree->insert(new Node(50, 'a'));
+    tree->insert(new Node(90, 's'));
+    tree->insert(new Node(25, 's'));
+    tree->insert(new Node(60, 's'));
+    tree->insert(new Node(40, 's'));
+    tree->insert(new Node(65, 's'));
+    tree->insert(new Node(10, 's'));
+    tree->insert(new Node(29, 's'));
 
-    tree->search(45)->display();
-    tree->search(24)->display();
-    if((tree->search(21)) == NULL){
-        cout<<"Nothing found!"<<endl;
-    }
+
+    // tree->search(45)->display();
+    // tree->search(24)->display();
+    // if((tree->search(21)) == NULL){
+    //     cout<<"Nothing found!"<<endl;
+    // }
+
+    tree->preOrder(tree->getRoot());
+
+    
 
     
     return 0;
