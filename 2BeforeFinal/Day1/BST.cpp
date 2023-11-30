@@ -74,6 +74,34 @@ void preOrder(Node *n){
     preOrder(n->right);
 }
 
+//in-order traversal
+void inOrder(Node *n){
+    if(n== NULL) return;
+
+    inOrder(n->left);
+    cout<<n->key<<"\t";
+    inOrder(n->right);
+
+}
+//post-order traversal:
+void postOrder(Node* n){
+    if(n==NULL){
+        return;
+    }
+    postOrder(n->right);
+    cout<<n->key<<"\t";
+    postOrder(n->left);
+}
+
+//breadth-first traversal using recursion:
+void breadthFirst(Node* n){
+    if(n == NULL) return;
+    cout<<n->key<<"\t";
+    breadthFirst(n->left);
+    breadthFirst(n->right);
+}
+
+
 
 Node* search(int key){
     // if(root == NULL) cout<<"Exception: The root is null"<<endl;
@@ -128,7 +156,8 @@ int main()
     //     cout<<"Nothing found!"<<endl;
     // }
 
-    tree->preOrder(tree->getRoot());
+    tree->breadthFirst(tree->getRoot());
+    cout<<"\nEnd of the post order:";
 
     
 
