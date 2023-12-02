@@ -149,6 +149,7 @@ Node* searchRecursive(int key, Node* n){
         n= n->right;
     }
     
+    return searchRecursive(key, n);
 }
 
 
@@ -197,8 +198,9 @@ int main()
     tree->populateBST(100);
 
     cout<<"\n Start of the inOrder using iterative method:\n";
-
     tree->inOrderIterative(tree->getRoot());
+
+    
 
     
 

@@ -118,7 +118,7 @@ public:
         {
             n = n->right;
         }
-        // return searchRecursive(key, n);
+         searchRecursive(key, n);
     }
 
  //root getter
@@ -142,7 +142,7 @@ int main()
 
 
     cout << "Here we are finding a node with the key value of 45" << endl;
-    Node* temp = tree->searchRecursive(88, tree->getRoot());
+    Node* temp = tree->searchRecursive(45, tree->getRoot());
     if (temp)
         temp->display();
     else
