@@ -192,20 +192,16 @@ void inOrderIterative(Node* n){
 
 int main()
 {
+
+
     BST *tree = new BST();
-  cout<<"Populating the tree with 100 nodes:";
+    cout<<"Populating the tree with 100 nodes:";
 
     tree->populateBST(100);
 
     cout<<"\n Start of the inOrder using iterative method:\n";
     tree->inOrderIterative(tree->getRoot());
-
-    
-
-    
-
-
-    
+   
 
     
     return 0;

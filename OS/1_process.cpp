@@ -33,8 +33,7 @@ public:
 
     void displayAll()
     {
-        //display the proccess table using the burst time information to calculate the waiting time and turn around time
-        //modifying the waiting time and the turn around time of each process
+        
         for (int i = 0; i < 3; i++)
         {
             if (i == 0)
