@@ -15,6 +15,7 @@ public:
     }
 };
 
+
 class BST
 {
     Node *root = NULL;
@@ -27,7 +28,7 @@ public:
 
         while (totalNodes <= limit)
         {
-            int randKey = rand() % 1000000; // increasing the random keys so that the program may terminate
+            int randKey = rand() % 1000; // increasing the random keys so that the program may terminate
             Node *temp = new Node(randKey, 'H');
             insert(temp);
         }
@@ -58,7 +59,7 @@ public:
 
                 if (curr->key == i->key)
                 {
-                    // cout << "Invalid value! There can't be repeated keys" << endl;
+                    cout << "Invalid value! Repeated value"<<curr->key << endl;
                     return;
                 }
 
@@ -233,11 +234,10 @@ public:
         }
 
         // Case 2: Deleting Node with 1 child
-        if (delNode->right != NULL || delNode->right == NULL)
-        {
+        
 
             // in case if the delnode has a null left
-            if (delNode->left == NULL)
+            if (delNode->left == NULL && delNode->right!= NULL)
             {
                 // making connection of delnode's right with parent's left
                 if (isLeft)
@@ -254,7 +254,7 @@ public:
             }
 
             // in case if the delnode has a right child null
-            else
+            if(delNode->right == NULL && delNode->left!= NULL)
             {
                 // making connection of parent's left with delnode's left
                 if (isLeft)
@@ -271,7 +271,7 @@ public:
                 totalNodes--;
                 return;
             }
-        }
+        
         // case 3: if both of delnode's childrent are non-null
 
         if (delNode->left != NULL && delNode->right != NULL)
@@ -433,15 +433,20 @@ int main()
 
     //?test case for recursive delete
     tree->insert(new Node(100, 'h'));
-    tree->populateTree(200);
+    tree->populateTree(100);
     cout << "Total nodes: " << tree->totalNodes << endl;
     // tree->inOrder(tree->getRoot());
 
-    tree->deleteNode(100);
-    cout << "Total nodes: Before Deletion" << tree->totalNodes << endl;
+    tree->inOrder(tree->getRoot());
+    
+    tree->deleteNode(20222);
+    
+    cout << "Total nodes: After Deletion" << tree->totalNodes << endl;
+
+
 
     // tree->inOrder(tree->getRoot());
-    cout << "Message after deletion with recursion" << endl;
+    cout << "Message after deletion with iterative method" << endl;
 
     // tree->insert(new Node(25, 'e'));
     // tree->insert(new Node(60, 'e'));

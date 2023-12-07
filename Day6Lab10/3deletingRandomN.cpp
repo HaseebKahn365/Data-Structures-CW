@@ -15,7 +15,6 @@ public:
     }
 };
 
-
 class BST
 {
     Node *root = NULL;
@@ -28,11 +27,21 @@ public:
 
         while (totalNodes <= limit)
         {
-            int randKey = rand() % 1000000; // increasing the random keys so that the program may terminate
+            int randKey = rand() % 1000; // increasing the random keys so that the program may terminate
             Node *temp = new Node(randKey, 'H');
             insert(temp);
         }
     }
+
+    //!Deleting the N random elements
+    void deleteRandomTotal(int limit){
+        int totalBeforedeletion = totalNodes;
+        while(totalBeforedeletion - totalNodes <=limit){
+            int randKey = rand() % 1000; // increasing the random keys so that the program may terminate
+            Node *temp = new Node(randKey, 'H');
+            deleteNode(temp->key);
+        }
+    } 
 
     int totalNodes = 0;
 
@@ -172,157 +181,120 @@ public:
 
     //! The deletion function:
 
-    void deleteNode(int key)
-    {
-        // Searching for the Node:
+   void deleteNode(int key) {
 
-        Node *parent = root; // this is the parent of the delnode
-        Node *curr = root;   // this is the iterator
-        bool isLeft = true;
-        Node *delNode = root;
+    // If there are no nodes in tree
+    if (root == NULL) {
+        cout << "Tree is Empty." << endl;
+        return;
+    }
 
-        while (curr != NULL)
-        {
-            if (key == curr->key)
-            {
-                delNode = curr; // delnode found!
-                break;          // to get out of the loop
-            }
-            parent = curr; // parent is above the left or right child to be deleted
+    Node *curr = root;
+    Node *parent = root;
+    Node *delNode = root;
+    bool isLeft = true;
 
-            if (key > curr->key)
-            {
-                curr = curr->right;
-                isLeft = false;
-            }
-            else
-            {
-                curr = curr->left;
-                isLeft = true;
-            }
+    // Searching for Key
+    while (curr != NULL) {
+        if (curr->key == key) {
+            delNode = curr;
+            break;
         }
 
-        // check if not found:
-        if (curr == NULL)
-        {
-            cout << "Sorry No item found with key " << key << endl;
+        parent = curr;
+
+        if (key < curr->key) {
+            curr = curr->left;
+            isLeft = true;
+        } else {
+            curr = curr->right;
+            isLeft = false;
+        }
+    }
+
+    // If key is not present in the tree.
+    if (curr == NULL) {
+        cout << "Key Not Found!" << endl;
+        delete delNode;
+        return;
+    }
+
+    // Case 1: Both left and right child are NULL of the deletion Node.
+    else if (delNode->left == NULL && delNode->right == NULL) {
+        if (delNode == root)
+            root = NULL;
+        else if (isLeft)
+            parent->left = NULL;
+        else
+            parent->right = NULL;
+
+        delete delNode;
+        totalNodes--;
+        
+
+        return;
+    }
+
+    // Case 2: Only Left Child is NULL
+    else if (delNode->left == NULL) {
+        if (isLeft)
+            parent->left = delNode->right;
+        else
+            parent->right = delNode->right;
+
+        delete delNode;
+        totalNodes--;
+
+        return;
+    }
+
+    // Case 3: Only Right Child is NULL
+    else if (delNode->right == NULL) {
+        if (isLeft)
+            parent->left = delNode->left;
+        else
+            parent->right = delNode->left;
+
+        delete delNode;
+        totalNodes--;
+
+        return;
+    }
+
+    // Case 4: None of right or left child are NULL
+    else if (delNode->left != NULL && delNode->right != NULL) {
+        Node *succ = curr->right;
+        Node *par = succ;
+
+        while (succ->left != NULL) {
+            par = succ;
+            succ = succ->left;
         }
 
-        // Case 1: check if leaf node:
-        if (delNode->left == NULL && delNode->right == NULL)
-        {
-            // if the deleted node is the root node:
-            if (delNode == root)
-                root = NULL;
+        if (par == succ)
+            delNode->right = succ->right;
+        else
+            par->left = succ->right;
 
-            // if the deleteNode is on the left of parent
-            else if (isLeft)
-            {
-                parent->left = NULL;
-            }
-            else
-            {
-                parent->right = NULL;
-            }
+        succ->left = delNode->left;
+        succ->right = delNode->right;
 
-            // delete the object from the memory:
-            // cout << "deleted Leaf" << endl;
-            delete delNode;
-            totalNodes--;
+        if (isLeft)
+            parent->left = succ;
+        else
+            parent->right = succ;
 
-            return; // Job done for the leafNode
-        }
+        if (delNode == root)
+            root = succ;
 
-        // Case 2: Deleting Node with 1 child
-        if (delNode->right != NULL || delNode->right == NULL)
-        {
+        delete delNode;
+        totalNodes--;
 
-            // in case if the delnode has a null left
-            if (delNode->left == NULL)
-            {
-                // making connection of delnode's right with parent's left
-                if (isLeft)
-                    parent->left = delNode->right;
-                // making connection with parent's right
-                else
-                {
-                    parent->right = delNode->right;
-                }
-                delete delNode;
-                totalNodes--;
+        // cout << root->key << endl;
+    }
+}
 
-                return;
-            }
-
-            // in case if the delnode has a right child null
-            else
-            {
-                // making connection of parent's left with delnode's left
-                if (isLeft)
-                {
-                    parent->left = delNode->left;
-                }
-                // making connection of parent's right with delnode's left
-                else
-                {
-                    parent->right = delNode->left;
-                }
-
-                delete delNode;
-                totalNodes--;
-                return;
-            }
-        }
-        // case 3: if both of delnode's childrent are non-null
-
-        if (delNode->left != NULL && delNode->right != NULL)
-        {
-            Node *succ = curr->right;
-            Node *parent2 = succ;
-            while (succ->left != NULL)
-            {
-                parent2 = succ;
-                succ = succ->left;
-            }
-            // if succ is just on the right
-            if (parent2 == succ)
-            {
-                delNode->right = succ->right;
-            }
-            // if succ was deeply on the left
-            else
-            {
-                parent2->left = succ->right;
-            }
-
-            // replacing the delnode with successor
-            succ->left = delNode->left;
-            succ->right = delNode->right;
-            // if parent has a delnode on the left;
-            if (isLeft)
-            {
-                parent->left = succ;
-            }
-            else
-            {
-                parent->right = succ;
-            }
-
-            // in case if the delNode is the root with two non-null children
-            if (delNode == root)
-            {
-                // everything else is done for us, we just need to relink the main root of the tree to the successor
-                root = succ;
-            }
-
-            delete delNode;
-            totalNodes--;
-            return;
-        }
-
-    } // end of delete()
-
-    //! The deletion function using recursion
+    // ! The deletion function using recursion
     void deleteNodeWithRecursion(int key)
     {
         // modifying the root after deletion
@@ -434,30 +406,16 @@ int main()
 
     //?test case for recursive delete
     tree->insert(new Node(100, 'h'));
-    tree->populateTree(1000);
+    tree->populateTree(200);
     cout << "Total nodes: " << tree->totalNodes << endl;
     // tree->inOrder(tree->getRoot());
 
-    tree->deleteNodeWithRecursion(100);
-    cout << "Total nodes: Before Deletion" << tree->totalNodes << endl;
+    tree->deleteRandomTotal(30);
+    cout << "Total nodes: After Deletion of 100 random nodes: " << tree->totalNodes << endl;
 
-    // tree->inOrder(tree->getRoot());
-    cout << "Message after deletion with recursion" << endl;
 
-    // tree->insert(new Node(25, 'e'));
-    // tree->insert(new Node(60, 'e'));
-    // tree->insert(new Node(40, 'b'));
-    // tree->insert(new Node(65, 'k'));
-    // tree->insert(new Node(10, 'h'));
-    // tree->insert(new Node(29, 'a'));
 
-    // tree->search(45)->display();
-    // tree->search(24)->display();
-    // if((tree->search(21)) == NULL){
-    //     cout<<"Nothing found!"<<endl;
-    // }
 
-    // tree->breadthFirst(tree->getRoot());
 
     return 0;
 }

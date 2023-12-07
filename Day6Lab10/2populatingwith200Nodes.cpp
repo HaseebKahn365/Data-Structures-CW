@@ -17,24 +17,15 @@ public:
 
 class BST
 {
-    Node *root;
+    Node *root = NULL;
 
 public:
-    int totalNodes;
-
-    BST()
-    {
-        root = NULL;
-        totalNodes = 0;
-        noLeafNodesDeleted = noNodeWithOneChildDeleted = noNodeWithTwoChildren = 0;
-    }
-
     //! Populating the tree with 1000 nodes with populate populateTree(int n):
 
     void populateTree(int limit)
     {
 
-        while (totalNodes < limit)
+        while (totalNodes <= limit)
         {
             int randKey = rand() % 1000000; // increasing the random keys so that the program may terminate
             Node *temp = new Node(randKey, 'H');
@@ -42,21 +33,7 @@ public:
         }
     }
 
-    //! Attempting to delete 20 random nodes and showing stats:
-
-    void delete20Random()
-    {
-        srand(time(0)); // Seed the random number generator once
-
-        int totalBeforeDeletion = totalNodes;
-        while (totalBeforeDeletion - totalNodes < 20)
-        {
-            int randKey = rand() % 200;
-            deleteNode(randKey);
-        }
-        cout << "\n\n\nTotal Nodes before deletion\t| \t Total Nodes after deletion \t |\tNo of leaf Nodes Deleted \t |\tNo of deleted Nodes with one child \t |\tNo of deleted Nodes with two children \n\n\n";
-        cout << "\t\t" << totalBeforeDeletion << "\t\t\t\t\t" << totalNodes << "\t\t\t\t\t" << noLeafNodesDeleted << "\t\t\t\t\t" << noNodeWithOneChildDeleted<< "\t\t"  << "\t\t\t" << noNodeWithTwoChildren<< "\t\t\n\n\n"  << endl;
-    }
+    int totalNodes = 0;
 
     Node *getRoot()
     {
@@ -194,12 +171,11 @@ public:
 
     //! The deletion function:
 
-
-void deleteNode(int key) {
+   void deleteNode(int key) {
 
     // If there are no nodes in tree
     if (root == NULL) {
-        cout << "Root is null nothing is here" << endl;
+        cout << "Tree is Empty." << endl;
         return;
     }
 
@@ -228,7 +204,7 @@ void deleteNode(int key) {
 
     // If key is not present in the tree.
     if (curr == NULL) {
-        cout << "No such key as: "<<key << endl;
+        cout << "Key Not Found!" << endl;
         delete delNode;
         return;
     }
@@ -244,7 +220,7 @@ void deleteNode(int key) {
 
         delete delNode;
         totalNodes--;
-        noLeafNodesDeleted++;
+        
 
         return;
     }
@@ -258,7 +234,6 @@ void deleteNode(int key) {
 
         delete delNode;
         totalNodes--;
-        noNodeWithOneChildDeleted++;
 
         return;
     }
@@ -272,7 +247,6 @@ void deleteNode(int key) {
 
         delete delNode;
         totalNodes--;
-        noNodeWithOneChildDeleted++;
 
         return;
     }
@@ -305,14 +279,12 @@ void deleteNode(int key) {
 
         delete delNode;
         totalNodes--;
-        noNodeWithTwoChildren++;
 
-        cout << root->key << endl;
+        // cout << root->key << endl;
     }
 }
 
-
-    //! The deletion function using recursion
+    // ! The deletion function using recursion
     void deleteNodeWithRecursion(int key)
     {
         // modifying the root after deletion
@@ -330,8 +302,6 @@ void deleteNode(int key) {
     }
 
 private:
-    int noLeafNodesDeleted, noNodeWithOneChildDeleted, noNodeWithTwoChildren;
-
     bool searchCheck(Node *root2, int key)
     {
 
@@ -404,22 +374,56 @@ private:
     }
 };
 
+
 int main()
 {
     BST *tree = new BST();
 
+    // //?case for deleting the root with null children
     // tree->insert(new Node(100, 'h'));
-    //     tree->insert(new Node(50, 'h'));
-    // tree->insert(new Node(120, 'h'));
-
     // tree->inOrder(tree->getRoot());
     // tree->deleteNode(100);
-    //     tree->inOrder(tree->getRoot());
-    //     cout<<"the end";
+    // tree->inOrder(tree->getRoot());
+
+    // //?case for deleting the root with non null children
+    // tree->insert(new Node(100, 'h'));
+    // tree->insert(new Node(50, 'a'));
+    // tree->insert(new Node(120, 's'));
+    // tree->inOrder(tree->getRoot());
+    // cout << "\nEnd of the post order:";
+    // tree->deleteNode(100);
+    // tree->inOrder(tree->getRoot());
+
+    //?test case for recursive delete
+    tree->insert(new Node(100, 'h'));
+    tree->populateTree(200);
+    cout << "Total nodes: " << tree->totalNodes << endl;
+    // tree->inOrder(tree->getRoot());
+
+    tree->deleteNode(100);
+    cout << "Total nodes: After Deletion of root" << tree->totalNodes << endl;
+
+    // tree->inOrder(tree->getRoot());
 
     
-    tree->populateTree(10000);
-    tree->delete20Random();
+    
+
+
+
+    // tree->insert(new Node(25, 'e'));
+    // tree->insert(new Node(60, 'e'));
+    // tree->insert(new Node(40, 'b'));
+    // tree->insert(new Node(65, 'k'));
+    // tree->insert(new Node(10, 'h'));
+    // tree->insert(new Node(29, 'a'));
+
+    // tree->search(45)->display();
+    // tree->search(24)->display();
+    // if((tree->search(21)) == NULL){
+    //     cout<<"Nothing found!"<<endl;
+    // }
+
+    // tree->breadthFirst(tree->getRoot());
 
     return 0;
 }
