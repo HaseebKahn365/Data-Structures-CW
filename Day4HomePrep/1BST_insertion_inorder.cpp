@@ -89,11 +89,11 @@ public:
         return root;
     }
 
-    Node* inOrderSucessorFinder(Node* root){
-        while(root->left != NULL){
-            root = root->left;
+    Node* inOrderSucessorFinder(Node* succ){
+        while(succ->left != NULL){
+            succ = succ->left;
         }
-        return root;
+        return succ;
     }
 
 
