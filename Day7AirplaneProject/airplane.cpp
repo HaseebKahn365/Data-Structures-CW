@@ -56,7 +56,7 @@ public:
                 {
                     curr->right = n;
                     totalPlanes++;
-                    cout << "inserted to the right, Total = "<<totalPlanes << endl;
+                    cout << "inserted to the right, Total = " << totalPlanes << endl;
                     return;
                 }
                 else
@@ -68,7 +68,7 @@ public:
                 {
                     curr->left = n;
                     totalPlanes++;
-                    cout << "inserted to the left Total = "<<totalPlanes<<endl;
+                    cout << "inserted to the left, Total = " << totalPlanes << endl;
                     return;
                 }
                 else
@@ -76,12 +76,13 @@ public:
             }
 
             if (curr == NULL)
-                cout << "dongrously close not allowed to land" << endl;
+                cout << "Dangerously close not allowed to land" << endl;
         }
     }
 
     // TODO: displaying the airplanes:
-    void displayAllPlanes(){
+    void displayAllPlanes()
+    {
         inOrder(getRoot());
     }
 
@@ -98,7 +99,8 @@ private:
             return;
         }
         inOrder(n->left);
-        cout<<"[ " <<n->arr_time <<" ]"<<"\t";
+        cout << "[ " << n->arr_time << " ]"
+             << "\t";
         inOrder(n->right);
     }
 };
@@ -111,9 +113,10 @@ int main()
     airTree->insert(new Airplane(79), 1);
     airTree->insert(new Airplane(43), 1);
     airTree->insert(new Airplane(64), 1);
-    airTree->insert( new Airplane(83), 1);
-    airTree->displayAllPlanes();
+    airTree->insert(new Airplane(83), 1);
+    airTree->insert(new Airplane(84), 4);
 
+    airTree->displayAllPlanes();
 
     return 0;
 }
