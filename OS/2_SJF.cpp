@@ -32,7 +32,7 @@ public:
         for (int i = 0; i < 3; i++)
         {
             int b;
-            cout << "Please enter the process " << i + 1 << " burst time: " << endl;
+            cout << "Please enter the PID " << i + 1 << " burst time: ";
             cin >> b;
             pArray[i] = new Process(b, i + 1);
         }
@@ -57,7 +57,7 @@ public:
         cout << "Process\t\tBurst Time\tWaiting Time\tTurnaround Time" << endl;
         for (int i = 0; i < 3; i++)
         {
-            cout << "P" << i + 1 << "\t\t" << pArray[i]->bt << "\t\t" << pArray[i]->wt << "\t\t" << pArray[i]->tt << endl;
+            cout << "P" << pArray[i]->pid << "\t\t" << pArray[i]->bt << "\t\t" << pArray[i]->wt << "\t\t" << pArray[i]->tt << endl;
         }
     }
 

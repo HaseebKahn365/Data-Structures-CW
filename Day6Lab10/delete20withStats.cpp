@@ -29,24 +29,20 @@ public:
         noLeafNodesDeleted = noNodeWithOneChildDeleted = noNodeWithTwoChildren = 0;
     }
 
-    //! Populating the tree with 1000 nodes with populate populateTree(int n):
-
     void populateTree(int limit)
     {
 
         while (totalNodes < limit)
         {
-            int randKey = rand() % 1000000; // increasing the random keys so that the program may terminate
+            int randKey = rand() % 1000000;
             Node *temp = new Node(randKey, 'H');
             insert(temp);
         }
     }
 
-    //! Attempting to delete 20 random nodes and showing stats:
-
     void delete20Random()
     {
-        srand(time(0)); // Seed the random number generator once
+        srand(time(0));
 
         int totalBeforeDeletion = totalNodes;
         while (totalBeforeDeletion - totalNodes < 20)
@@ -55,7 +51,9 @@ public:
             deleteNode(randKey);
         }
         cout << "\n\n\nTotal Nodes before deletion\t| \t Total Nodes after deletion \t |\tNo of leaf Nodes Deleted \t |\tNo of deleted Nodes with one child \t |\tNo of deleted Nodes with two children \n\n\n";
-        cout << "\t\t" << totalBeforeDeletion << "\t\t\t\t\t" << totalNodes << "\t\t\t\t\t" << noLeafNodesDeleted << "\t\t\t\t\t" << noNodeWithOneChildDeleted<< "\t\t"  << "\t\t\t" << noNodeWithTwoChildren<< "\t\t\n\n\n"  << endl;
+        cout << "\t\t" << totalBeforeDeletion << "\t\t\t\t\t" << totalNodes << "\t\t\t\t\t" << noLeafNodesDeleted << "\t\t\t\t\t" << noNodeWithOneChildDeleted << "\t\t"
+             << "\t\t\t" << noNodeWithTwoChildren << "\t\t\n\n\n"
+             << endl;
     }
 
     Node *getRoot()
@@ -66,7 +64,7 @@ public:
     {
         if (root == NULL)
         {
-            // cout << "The new Node has been made a root element" << endl;
+
             root = i;
             totalNodes++;
         }
@@ -81,32 +79,32 @@ public:
 
                 if (curr->key == i->key)
                 {
-                    // cout << "Invalid value! There can't be repeated keys" << endl;
+
                     return;
                 }
 
                 if (curr->key > i->key)
                 {
-                    // cout << "Going to the left of " << curr->key << endl;
+
                     curr = curr->left;
 
                     if (curr == NULL)
                     {
                         parent->left = i;
-                        // cout << "Inserted at the left of " << parent->key << endl;
+
                         totalNodes++;
                         return;
                     }
                 }
                 else
                 {
-                    // cout << "Going to the right of " << curr->key << endl;
+
                     curr = curr->right;
 
                     if (curr == NULL)
                     {
                         parent->right = i;
-                        // cout << "Inserted at the right of " << parent->key << endl;
+
                         totalNodes++;
                         return;
                     }
@@ -114,9 +112,6 @@ public:
             }
         }
     }
-
-    // tree traversals in BST:
-    // preorder: root-> left -> right
 
     void preOrder(Node *n)
     {
@@ -129,7 +124,6 @@ public:
         preOrder(n->right);
     }
 
-    // in-order traversal
     void inOrder(Node *n)
     {
         if (n == NULL)
@@ -139,7 +133,7 @@ public:
         cout << n->key << "\t";
         inOrder(n->right);
     }
-    // post-order traversal:
+
     void postOrder(Node *n)
     {
         if (n == NULL)
@@ -151,7 +145,6 @@ public:
         postOrder(n->left);
     }
 
-    // breadth-first traversal using recursion:
     void breadthFirst(Node *n)
     {
         if (n == NULL)
@@ -163,7 +156,7 @@ public:
 
     Node *search(int key)
     {
-        // if(root == NULL) cout<<"Exception: The root is null"<<endl;
+
         Node *parent, *curr;
         parent = curr = root;
 
@@ -179,143 +172,142 @@ public:
 
             if (curr->key > key)
             {
-                // look on the left side;
-                //  if(curr = NULL) return NULL;
+
                 curr = curr->left;
             }
             else if (curr->key < key)
             {
-                // look on the right side:
-                //  if(curr == NULL) return NULL;
+
                 curr = curr->right;
             }
         }
     }
 
-    //! The deletion function:
+    void deleteNode(int key)
+    {
 
-
-void deleteNode(int key) {
-
-    // If there are no nodes in tree
-    if (root == NULL) {
-        cout << "Root is null nothing is here" << endl;
-        return;
-    }
-
-    Node *curr = root;
-    Node *parent = root;
-    Node *delNode = root;
-    bool isLeft = true;
-
-    // Searching for Key
-    while (curr != NULL) {
-        if (curr->key == key) {
-            delNode = curr;
-            break;
+        if (root == NULL)
+        {
+            cout << "Root is null nothing is here" << endl;
+            return;
         }
 
-        parent = curr;
+        Node *curr = root;
+        Node *parent = root;
+        Node *delNode = root;
+        bool isLeft = true;
 
-        if (key < curr->key) {
-            curr = curr->left;
-            isLeft = true;
-        } else {
-            curr = curr->right;
-            isLeft = false;
+        while (curr != NULL)
+        {
+            if (curr->key == key)
+            {
+                delNode = curr;
+                break;
+            }
+
+            parent = curr;
+
+            if (key < curr->key)
+            {
+                curr = curr->left;
+                isLeft = true;
+            }
+            else
+            {
+                curr = curr->right;
+                isLeft = false;
+            }
+        }
+
+        if (curr == NULL)
+        {
+            cout << "No such key as: " << key << endl;
+            delete delNode;
+            return;
+        }
+
+        else if (delNode->left == NULL && delNode->right == NULL)
+        {
+            if (delNode == root)
+                root = NULL;
+            else if (isLeft)
+                parent->left = NULL;
+            else
+                parent->right = NULL;
+
+            delete delNode;
+            totalNodes--;
+            noLeafNodesDeleted++;
+
+            return;
+        }
+
+        else if (delNode->left == NULL)
+        {
+            if (isLeft)
+                parent->left = delNode->right;
+            else
+                parent->right = delNode->right;
+
+            delete delNode;
+            totalNodes--;
+            noNodeWithOneChildDeleted++;
+
+            return;
+        }
+
+        else if (delNode->right == NULL)
+        {
+            if (isLeft)
+                parent->left = delNode->left;
+            else
+                parent->right = delNode->left;
+
+            delete delNode;
+            totalNodes--;
+            noNodeWithOneChildDeleted++;
+
+            return;
+        }
+
+        else if (delNode->left != NULL && delNode->right != NULL)
+        {
+            Node *succ = curr->right;
+            Node *par = succ;
+
+            while (succ->left != NULL)
+            {
+                par = succ;
+                succ = succ->left;
+            }
+
+            if (par == succ)
+                delNode->right = succ->right;
+            else
+                par->left = succ->right;
+
+            succ->left = delNode->left;
+            succ->right = delNode->right;
+
+            if (isLeft)
+                parent->left = succ;
+            else
+                parent->right = succ;
+
+            if (delNode == root)
+                root = succ;
+
+            delete delNode;
+            totalNodes--;
+            noNodeWithTwoChildren++;
+
+            cout << root->key << endl;
         }
     }
 
-    // If key is not present in the tree.
-    if (curr == NULL) {
-        cout << "No such key as: "<<key << endl;
-        delete delNode;
-        return;
-    }
-
-    // Case 1: Both left and right child are NULL of the deletion Node.
-    else if (delNode->left == NULL && delNode->right == NULL) {
-        if (delNode == root)
-            root = NULL;
-        else if (isLeft)
-            parent->left = NULL;
-        else
-            parent->right = NULL;
-
-        delete delNode;
-        totalNodes--;
-        noLeafNodesDeleted++;
-
-        return;
-    }
-
-    // Case 2: Only Left Child is NULL
-    else if (delNode->left == NULL) {
-        if (isLeft)
-            parent->left = delNode->right;
-        else
-            parent->right = delNode->right;
-
-        delete delNode;
-        totalNodes--;
-        noNodeWithOneChildDeleted++;
-
-        return;
-    }
-
-    // Case 3: Only Right Child is NULL
-    else if (delNode->right == NULL) {
-        if (isLeft)
-            parent->left = delNode->left;
-        else
-            parent->right = delNode->left;
-
-        delete delNode;
-        totalNodes--;
-        noNodeWithOneChildDeleted++;
-
-        return;
-    }
-
-    // Case 4: None of right or left child are NULL
-    else if (delNode->left != NULL && delNode->right != NULL) {
-        Node *succ = curr->right;
-        Node *par = succ;
-
-        while (succ->left != NULL) {
-            par = succ;
-            succ = succ->left;
-        }
-
-        if (par == succ)
-            delNode->right = succ->right;
-        else
-            par->left = succ->right;
-
-        succ->left = delNode->left;
-        succ->right = delNode->right;
-
-        if (isLeft)
-            parent->left = succ;
-        else
-            parent->right = succ;
-
-        if (delNode == root)
-            root = succ;
-
-        delete delNode;
-        totalNodes--;
-        noNodeWithTwoChildren++;
-
-        cout << root->key << endl;
-    }
-}
-
-
-    //! The deletion function using recursion
     void deleteNodeWithRecursion(int key)
     {
-        // modifying the root after deletion
+
         if (searchCheck(getRoot(), key))
         {
             totalNodes--;
@@ -364,14 +356,12 @@ private:
         }
         else
         {
-            // if root2->key == key:
-            // case 1: leaf node deletion
+
             if (root2->left == NULL && root2->right == NULL)
             {
                 return NULL;
             }
 
-            // case 2: if root2 with one child
             if (root2->right == NULL)
             {
                 return root2->left;
@@ -381,14 +371,11 @@ private:
                 return root2->right;
             }
 
-            // case3: if root2 with with two children
             Node *IS = inOrderSucessorFinder(root2->right);
 
-            // copy the data from the inorder successor to the root2;
             root2->key = IS->key;
             root2->data = IS->data;
 
-            // delete the IS from the bottom
             root2->right = recursiveDeleteNodeWithKey(root2->right, IS->key);
         }
         return root2;
@@ -408,16 +395,6 @@ int main()
 {
     BST *tree = new BST();
 
-    // tree->insert(new Node(100, 'h'));
-    //     tree->insert(new Node(50, 'h'));
-    // tree->insert(new Node(120, 'h'));
-
-    // tree->inOrder(tree->getRoot());
-    // tree->deleteNode(100);
-    //     tree->inOrder(tree->getRoot());
-    //     cout<<"the end";
-
-    
     tree->populateTree(10000);
     tree->delete20Random();
 
