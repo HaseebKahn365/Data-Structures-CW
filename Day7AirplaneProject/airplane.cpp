@@ -92,6 +92,9 @@ private:
         return root;
     }
 
+    //calculate the heights;
+
+
     void inOrder(Airplane *n)
     {
         if (n == NULL)
@@ -100,7 +103,7 @@ private:
         }
         inOrder(n->left);
         cout << "[ " << n->arr_time << " ]"
-             << "\t";
+             << "\t\t";
         inOrder(n->right);
     }
 };
