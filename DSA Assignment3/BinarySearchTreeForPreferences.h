@@ -1,20 +1,20 @@
 #include <iostream>
 #include <string>
-#include "Prefference.h"
+#include "prefferences.h"
 
 using namespace std;
 
 
 
 
-class HNode{
+class HNodePref{
     public:
     int pref_id;
     Prefference pref;
-    HNode* left;
-    HNode* right; 
+    HNodePref* left;
+    HNodePref* right; 
 
-    HNode(int id, Prefference p){
+    HNodePref(int id, Prefference p){
         pref_id = id;
         pref = p;
         left = NULL;
@@ -25,19 +25,25 @@ class HNode{
 };
 
 class HBST{
-    HNode* root;
+    HNodePref* root;
 
     public:
     HBST(){
         root = NULL;
     }
 
-    void insert(HNode* n){
+    HNodePref* getRoot(){
+        return root;
+    }
+
+    
+
+    void insert(HNodePref* n){
         if(root == NULL){
             root = n;
         }else{
-            HNode* curr = root;
-            HNode* parent = NULL;
+            HNodePref* curr = root;
+            HNodePref* parent = NULL;
 
             while(curr != NULL){
                 parent = curr;
@@ -56,8 +62,8 @@ class HBST{
         }
     }
 
-    HNode* search(int id){
-        HNode* curr = root;
+    HNodePref* search(int id){
+        HNodePref* curr = root;
 
         while(curr != NULL){
             if(curr->pref_id == id){
@@ -73,8 +79,8 @@ class HBST{
     }
 
     void deleteNode(int id){
-        HNode* curr = root;
-        HNode* parent = NULL;
+        HNodePref* curr = root;
+        HNodePref* parent = NULL;
 
         while(curr != NULL && curr->pref_id != id){
             parent = curr;
@@ -114,8 +120,8 @@ class HBST{
                 parent->right = curr->left;
             }
         }else{
-            HNode* succParent = curr;
-            HNode* succ = curr->right;
+            HNodePref* succParent = curr;
+            HNodePref* succ = curr->right;
 
             while(succ->left != NULL){
                 succParent = succ;
@@ -147,7 +153,7 @@ class HBST{
         inorder(root);
     }
 
-    void inorder(HNode* node){
+    void inorder(HNodePref* node){
         if(node != NULL){
             inorder(node->left);
             cout<<node->pref_id<<" ";
