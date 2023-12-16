@@ -138,29 +138,49 @@ public:
             }
             return;
         }
-        
+
         // Airplane* delNode = curr; //not needed
 
         // check if node with one child on the left;
-        if(curr->left != NULL && curr->right == NULL)
+        if (curr->left != NULL && curr->right == NULL)
         {
             parent->left = curr->left;
-            curr->left = NULL; delete curr;
-            cout<<"Deleted node with one right child null"<<endl;
+            curr->left = NULL;
+            delete curr;
+            cout << "Deleted node with one right child null" << endl;
             return;
-
         }
-        //check if node with one child on the right
-        if(curr->right != NULL && curr->left == NULL)
+        // check if node with one child on the right
+        if (curr->right != NULL && curr->left == NULL)
         {
             parent->right = curr->right;
-            curr->right = NULL; delete curr;
-            cout<<"Deleted node with one left child null" << endl;
+            curr->right = NULL;
+            delete curr;
+            cout << "Deleted node with one left child null" << endl;
             return;
         }
 
+        // deleting node with both child ! null; on right side
+        if (!isLeft)
+        {
+            parent->right = findSuccessor(curr);
+            cout << parent->right->arr_time << endl;
+            parent->right->left = curr->left;
+            cout << parent->left->arr_time << endl;
+            delete curr;
+            return;
+        }
+        else
+        {
+            parent->left = findSuccessor(curr);
+            cout<<parent->left->arr_time<<endl;
+            parent->left->left = curr->left;
+            cout<<parent->left->left->arr_time<<endl;
+            delete curr;
+            return;
 
-
+        }
+        //
     }
 
 private:
@@ -175,6 +195,16 @@ private:
              << "\t\t";
         inOrder(n->right);
     }
+
+    Airplane *findSuccessor(Airplane *A)
+    {
+        A = A->right;
+        while (A->left != NULL)
+        {
+            A = A->left;
+        }
+        return A;
+    }
 };
 
 int main()
@@ -182,6 +212,7 @@ int main()
     AirplaneTree *airTree = new AirplaneTree();
     airTree->insert(new Airplane(49), 3);
     airTree->insert(new Airplane(46), 1);
+    airTree->insert(new Airplane(47), 0);
     airTree->insert(new Airplane(79), 1);
     airTree->insert(new Airplane(43), 1);
     airTree->insert(new Airplane(64), 1);
@@ -193,10 +224,14 @@ int main()
     // airTree->displayAllPlanes(); //test passed;
     // airTree->deleteAirplane(46);
     // airTree->displayAllPlanes(); //test passed;
-    airTree->deleteAirplane(83);
-    airTree->displayAllPlanes();
+    // airTree->deleteAirplane(83);
+    // airTree->displayAllPlanes(); //test passed
+    // airTree->deleteAirplane(79);
+    // airTree->displayAllPlanes(); // test passed
 
-
+    airTree->deleteAirplane(49);
+    airTree->displayAllPlanes(); 
+    
 
     return 0;
 }
