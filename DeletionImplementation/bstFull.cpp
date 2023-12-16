@@ -233,11 +233,12 @@ int main()
     AirplaneTree *airTree = new AirplaneTree();
     airTree->insert(new Airplane(49), 3);
     airTree->insert(new Airplane(46), 1);
-    airTree->insert(new Airplane(79), 1);
+    // airTree->insert(new Airplane(79), 1);
 
-    airTree->insert(new Airplane(43), 1);
-    airTree->insert(new Airplane(50), 4);
-    airTree->insert(new Airplane(60), 1);
+    // airTree->insert(new Airplane(43), 1);
+    // airTree->insert(new Airplane(50), 4);
+    // airTree->insert(new Airplane(60), 1);
+    // airTree->insert(new Airplane(83), 1);
 
     airTree->displayAllPlanes();
     // airTree->deleteAirplane(43);
