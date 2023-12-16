@@ -136,7 +136,7 @@ public:
                 cout << "deleting the right node of parent known to be leaf" << endl;
                 delete curr;
             }
-            // return;
+            return;
         }
 
         // Airplane* delNode = curr; //not needed
@@ -146,18 +146,18 @@ public:
         {
             parent->left = curr->left;
             curr->left = NULL;
+            delete curr;
             cout << "Deleted node with one right child null" << endl;
-            // delete curr;
-            // return;
+            return;
         }
         // check if node with one child on the right
         if (curr->right != NULL && curr->left == NULL)
         {
             parent->right = curr->right;
             curr->right = NULL;
+            delete curr;
             cout << "Deleted node with one left child null" << endl;
-            // delete curr;
-            // return;
+            return;
         }
 
         // deleting node with both child ! null; on right side
@@ -180,7 +180,7 @@ public:
             return;
 
         }
-        
+        //
     }
 
 private:
@@ -230,7 +230,7 @@ int main()
     // airTree->displayAllPlanes(); // test passed
 
     airTree->deleteAirplane(49);
-    airTree->displayAllPlanes(); //test passed
+    airTree->displayAllPlanes(); 
     
 
     return 0;
