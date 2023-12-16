@@ -124,6 +124,11 @@ public:
         // check if leaf node:
         if (curr->right == NULL && curr->left == NULL)
         {
+            if(curr == root){
+                root = NULL; cout<<"only root alone was deleted"<<endl;
+                delete curr;
+                return;
+            }
             if (isLeft)
             {
                 parent->left = NULL;
@@ -144,6 +149,12 @@ public:
         // check if node with one child on the left;
         if (curr->left != NULL && curr->right == NULL)
         {
+            if(curr == root){
+                root = root ->left;
+                delete curr;
+                cout<<"deleted root with only one left child"<<endl;
+                return;
+            }
             parent->left = curr->left;
             curr->left = NULL;
             cout << "Deleted node with one right child null" << endl;
@@ -153,6 +164,13 @@ public:
         // check if node with one child on the right
         if (curr->right != NULL && curr->left == NULL)
         {
+            if(curr == root)
+            {
+                root = root->right;
+                cout<<"DDeleted node with only one left child null"<<endl;
+                delete curr;
+                return;
+            }
             parent->right = curr->right;
             curr->right = NULL;
             cout << "Deleted node with one left child null" << endl;
@@ -167,8 +185,8 @@ public:
             cout << parent->right->arr_time << endl;
             parent->right->left = curr->left;
             cout << parent->left->arr_time << endl;
-            delete curr;
-            return;
+            // delete curr;
+            // return;
         }
         else
         {
@@ -176,8 +194,8 @@ public:
             cout<<parent->left->arr_time<<endl;
             parent->left->left = curr->left;
             cout<<parent->left->left->arr_time<<endl;
-            delete curr;
-            return;
+            // delete curr;
+            // return;
 
         }
         
@@ -211,13 +229,13 @@ int main()
 {
     AirplaneTree *airTree = new AirplaneTree();
     airTree->insert(new Airplane(49), 3);
-    airTree->insert(new Airplane(46), 1);
+    // airTree->insert(new Airplane(46), 1);
     airTree->insert(new Airplane(47), 0);
-    airTree->insert(new Airplane(79), 1);
-    airTree->insert(new Airplane(43), 1);
-    airTree->insert(new Airplane(64), 1);
-    airTree->insert(new Airplane(83), 1);
-    airTree->insert(new Airplane(84), 4);
+    // airTree->insert(new Airplane(79), 1);
+    // airTree->insert(new Airplane(43), 1);
+    // airTree->insert(new Airplane(64), 1);
+    // airTree->insert(new Airplane(83), 1);
+    // airTree->insert(new Airplane(84), 4);
 
     airTree->displayAllPlanes();
     // airTree->deleteAirplane(43);
