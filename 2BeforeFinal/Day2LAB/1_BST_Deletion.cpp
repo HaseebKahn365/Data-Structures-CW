@@ -19,7 +19,7 @@ class BST
 {
     Node *root = NULL;
 
-public:
+public: 
     void insert(Node *i)
     {
         if (root == NULL)
