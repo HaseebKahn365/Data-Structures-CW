@@ -83,6 +83,7 @@ public:
     // TODO: displaying the airplanes:
     void displayAllPlanes()
     {
+        cout << "Root: " << root->arr_time << endl;
         inOrder(getRoot());
         cout << endl;
     }
@@ -161,6 +162,27 @@ public:
         }
 
         // deleting node with both child ! null; on right side
+        //! delete root
+        if (curr == root)
+        {
+            cout << "deleting the root with both children" << endl;
+            Airplane *succ = curr->right;
+            Airplane *par = succ;
+
+            while (succ->left != NULL)
+            {
+                par = succ;
+                succ = succ->left;
+            }
+            cout << "Par " << par->arr_time << endl;
+            cout << "Succ " << succ->arr_time << endl;
+            par->left = succ->right; // assign null or any node of succ
+            succ->right = curr->right;
+            succ->left = curr->left;
+            root = succ;
+            delete curr;
+            return;
+        }
         if (!isLeft)
         {
             parent->right = findSuccessor(curr);
@@ -173,12 +195,11 @@ public:
         else
         {
             parent->left = findSuccessor(curr);
-            cout<<parent->left->arr_time<<endl;
+            cout << parent->left->arr_time << endl;
             parent->left->left = curr->left;
-            cout<<parent->left->left->arr_time<<endl;
+            cout << parent->left->left->arr_time << endl;
             delete curr;
             return;
-
         }
         //
     }
@@ -212,12 +233,11 @@ int main()
     AirplaneTree *airTree = new AirplaneTree();
     airTree->insert(new Airplane(49), 3);
     airTree->insert(new Airplane(46), 1);
-    airTree->insert(new Airplane(47), 0);
     airTree->insert(new Airplane(79), 1);
+
     airTree->insert(new Airplane(43), 1);
-    airTree->insert(new Airplane(64), 1);
-    airTree->insert(new Airplane(83), 1);
-    airTree->insert(new Airplane(84), 4);
+    airTree->insert(new Airplane(50), 4);
+    airTree->insert(new Airplane(60), 1);
 
     airTree->displayAllPlanes();
     // airTree->deleteAirplane(43);
@@ -230,8 +250,7 @@ int main()
     // airTree->displayAllPlanes(); // test passed
 
     airTree->deleteAirplane(49);
-    airTree->displayAllPlanes(); 
-    
+    airTree->displayAllPlanes();
 
     return 0;
 }
