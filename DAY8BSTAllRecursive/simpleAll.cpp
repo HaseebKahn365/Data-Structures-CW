@@ -153,7 +153,7 @@ private:
         return n;
     }
 
-     int leafNodes =0; int child1 =0; int child2 =0;
+    int leafNodes =0; int child1 =0; int child2 =0;
     void countNNode(Node* n, int &leafNodes, int &child1, int &child2)
     {
         if(n==NULL) return;
