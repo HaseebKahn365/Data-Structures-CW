@@ -10,6 +10,8 @@ string input1 = "This is the basic test that will be test in case if the length 
 unordered_map<bool, string> encryptedTextData;
 
 
+
+
 class AlphaSubstitutionCipher
 {
 private:
