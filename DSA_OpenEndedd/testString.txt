@@ -1,0 +1,5 @@
+
+O(n\log n) time, unlike the presorted and unsorted conventional Huffman problems, respectively.
+
+Huffman coding with unequal letter costs
+In the standard Huffman coding problem, it is assumed that each symbol in the set that the code words are constructed from has an equal cost to transmit: a code word whose length is N digits will always have a cost of N, no matter how many of those digits are 0s, how many are 1s, etc. When working under this assumption, minimizing the total cost of the message and minimizing the total number of digits are the same thing.
