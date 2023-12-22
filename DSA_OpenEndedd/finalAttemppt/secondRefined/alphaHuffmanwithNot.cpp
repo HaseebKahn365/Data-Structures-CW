@@ -204,9 +204,14 @@ public:
         }
 
 
-        //else use the huffamn tree to compress the message and apply  NOT gate to each bit
         else
         {
+            int count = 0;
+            //before encryption the number of bits are
+            for(char ch: message){
+                count+=8;
+            }
+            cout<<"Before encryption the number of bits are: "<<count<<endl;
 
             HuffmanNode *root = huffmanTree->buildHuffmanTree(message);
             huffmanTree->compress(message);
@@ -215,6 +220,8 @@ public:
             {
                 cout << bit;
             }
+            //after encryption the number of bits are:
+            cout<<"\n\nAfter encryption the number of bits are: "<<huffmanBool.size()<<endl;
             cout << endl;
         }
     }
@@ -226,7 +233,14 @@ public:
 
         else
         {
-            huffmanTree->decompress();
+            message = huffmanTree->decompress();
+            for (bool bit : huffmanBool)
+            {
+                cout << bit;
+            }
+            cout << endl<<"\n\n";
+            cout<<"The decrypted message is: "<<message<<endl;
+
 
         }
     }
