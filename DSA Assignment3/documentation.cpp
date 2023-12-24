@@ -1,10 +1,10 @@
 
 
-// extracting the Linked List and Person
 
-#include <cstdlib> // for rand() function
-#include <ctime>   // for srand() function
-#include <iomanip> // for setw() function
+
+#include <cstdlib> 
+#include <ctime>   
+#include <iomanip> 
 
 #include <string>
 
@@ -13,7 +13,7 @@
 #include <iostream>
 using namespace std;
 
-// create a basic car class as rest of the above
+
 
 class Car
 {
@@ -33,7 +33,7 @@ public:
 
 class Wifi
 {
-    //add a queue as buffer and array of 10 persons
+    
 public:
     bool wifi1;
 
@@ -46,7 +46,7 @@ public:
 
 class Bluetooth
 {
-    //add a queue as buffer and array of 10 persons
+    
 public:
     bool Bluetooth;
 
@@ -160,7 +160,7 @@ public:
     Phone p1;
     Tablet t1;
     Laptop L1;
-    PC p2; // Note: Corrected from p1 to p2
+    PC p2; 
 };
 
 class HPerson
@@ -290,7 +290,7 @@ public:
 
 
     Home() : persCount(0) {}
-    //registerUser
+    
 
     void registerUser() {
         Prefference *pref = new Prefference();
@@ -328,14 +328,14 @@ public:
             }
         }
 
-        // Display the main interface after detection actions
+        
         displayMainInterface();
     }
 
     void displayMainInterface() {
-        cout << "Welcome Owner: "; // Assuming you get owner's name here
+        cout << "Welcome Owner: "; 
         string ownerName;
-        cin >> ownerName; // Get the owner's name from user input
+        cin >> ownerName; 
 
         cout << "Pick from the following Services:\n";
         cout << "1. General Services\n";
@@ -353,7 +353,7 @@ public:
                 displaySpecialServices(ownerName);
                 break;
             case 3:
-                // Add logic for deleting preferences (not implemented in the provided code)
+                
                 break;
             default:
                 cout << "Invalid choice.\n";
@@ -370,7 +370,7 @@ public:
 
    
 
-        // Display home status after updating services
+        
         displayHomeStatus(ownerName);
     }
 
@@ -379,14 +379,14 @@ public:
 
        
 
-        // Display home status after updating services
+        
         displayHomeStatus(ownerName);
     }
 
     void displayHomeStatus(const string& ownerName) {
         cout << "Displaying Home Status:\n";
 
-        // Display information for each person in the linked list
+        
         HNodePref *currentNode = allPreferences.getRoot();
         while (currentNode != NULL) {
             HPerson *person = people.search(currentNode->pref_id);
@@ -466,56 +466,56 @@ private:
     
 };
 
-// int main() {
-//     srand(time(0)); // Seed for random number generation
-
-//     Home smartHome;
-
-//     // Simulate person detection (pressing 'D' key)
-//     smartHome.startSmartHome();
-
-//     return 0;
-// }
 
 
-//Following content should be displayed according to the project requirements:
 
-// Home User-Interface:
-// The home’s services are available all the time whenever the new user enters. This will be simulated using the “D” key which stands for “detection”. The following is what happens when the user presses the D button:
-// the person will be detected. This will initiate the personDetected method in the House. This method will first check if there is person in the list of the people of home. If the list is empty then directly call the registerUser method and add the user to the linked list otherwise, we call the selectRandomOption() to display a random person from the list  or remove random person from list or even register an newUser. This will be done at random. The appropriate action will be taken according to the above three random option. After all the detectionAction is done. We will display the main interface in the terminal. This interface will be dynamic. Which means that the values of some of the services will be randomly updated to make the ui more refreshing.
-// Here is a generic UI of the terminal from start to end:
-// // (d is pressed)
-// “Welcome Owner: “ // asks for owner name i.e. “Haseeb”.
-// Pick from the following Services:
-// 1.	General Services
-// 2.	Special Services
-// 3.	Delete other preferences
-// General Services:
-// 1.	WIFI
-// 2.	Bluetooth
-// 3.	Heater
-// 4.	Lights Intensity
-// Displaying Home Status:
-// 1-	Haseeb
-// Services:
-// Bluetooth: using [34%] //just for styling the 
-// Wifi: using [50%]
-// Lights: intensity [500 lumins]
-// Heater: Temperature [37 C]
-// TV: watching
-// //Special Services.
-// Phone: using it.
-// Laptop: using it.
-// Tablet: using it //don’t display the services not being used
-// 2-	Friend
-// Services:
-// Bluetooth: using [34%] // these values update dynamically just for visibility
-// Wifi: using [50%]
-// Lights: intensity [500 lumins]
-// Heater: Temperature [37 C]
-// TV: watching
 
-// …and so, one for all the users in the linked list. We will constantly listen for the “D” character 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 class Home {
@@ -543,14 +543,14 @@ class Home {
         
         
 
-        // Display the main interface after detection actions
+        
         displayMainInterface();
     }
 
     void displayMainInterface() {
-        cout << "Welcome Owner: "; // Assuming you get owner's name here
+        cout << "Welcome Owner: "; 
         string ownerName;
-        cin >> ownerName; // Get the owner's name from user input
+        cin >> ownerName; 
 
         cout << "Pick from the following Services:\n";
         cout << "1. General Services\n";
@@ -568,7 +568,7 @@ class Home {
                 displaySpecialServices(ownerName);
                 break;
             case 3:
-                // Add logic for deleting preferences (not implemented in the provided code)
+                
                 break;
             default:
                 cout << "Invalid choice.\n";
@@ -583,27 +583,27 @@ class Home {
         cout << "3. Heater\n";
         cout << "4. Lights Intensity\n";
 
-        // Assuming you have code here to handle user input for general services
-        // ...
+        
+        
 
-        // Display home status after updating services
+        
         displayHomeStatus(ownerName);
     }
 
     void displaySpecialServices(const string& ownerName) {
         cout << "Special Services:\n";
 
-        // Assuming you have code here to handle user input for special services
-        // ...
+        
+        
 
-        // Display home status after updating services
+        
         displayHomeStatus(ownerName);
     }
 
     void displayHomeStatus(const string& ownerName) {
         cout << "Displaying Home Status:\n";
 
-        // Display information for each person in the linked list
+        
         HNodePref *currentNode = allPreferences.getRoot();
         while (currentNode != NULL) {
             HPerson *person = people.search(currentNode->pref_id);
@@ -632,19 +632,19 @@ class Home {
         cout << person->person_id << "- " << "haseeb" << "\n";
         cout << "Services:\n";
 
-        // Assuming you have code here to display the services of a person
-        // ...
+        
+        
     } 
 
    
 };
 
 int main() {
-    srand(time(0)); // Seed for random number generation
+    srand(time(0)); 
 
     Home smartHome;
 
-    // Simulate person detection (pressing 'D' key)
+    
     smartHome.startSmartHome();
 
     return 0;
