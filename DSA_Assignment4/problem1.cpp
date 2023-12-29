@@ -1,10 +1,4 @@
-// linear probe hash table
-//string to an index number using hash function
-//display function for the hashtable class with -1 for empty strings
-//rehash function to relocate the hash table.
-//calculate the loadfactor if excedes 0.5 then double the hashtable size.
-//calute the next prime after double size.
-//handle the deleted strings
+
 #include<iostream>
 #include<string>
 using namespace std;

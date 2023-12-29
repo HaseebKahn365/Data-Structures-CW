@@ -61,12 +61,12 @@ public:
     for(int i=0; i<size; i++){ //linear probing
         if(hashArr[index] == str){
             hashArr[index] = "-1";
-            cout << "String deleted successfully" << endl;
+            cout << "String killed wihtout mercy" << endl;
             return;
         }
         index++;
     }
-    cout << "String not found" << endl;
+    cout << "String not found on grounds" << endl;
   }
 
   // Display strings
@@ -126,7 +126,7 @@ public:
 };
 
 int main() {
-  HashTable myHashTable;
+  HashTable* ht = new HashTable();
 
   while (true) {
     cout << "What do you want?" << endl;
@@ -141,16 +141,16 @@ int main() {
 
     switch (choice) {
       case 1:
-        myHashTable.insertString();
+        ht->insertString();
         break;
       case 2:
         cout << "Displaying strings:" << endl;
-        myHashTable.displayTable();
+        ht->displayTable();
         break;
         case 3:
         cout << "Enter string to delete: ";
         cin >> str;
-        myHashTable.deleteString(str);
+        ht->deleteString(str);
         break;
       default:
         return 0;
