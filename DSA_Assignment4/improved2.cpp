@@ -53,21 +53,6 @@ public:
       rehash();
     }
   }
-  
-  //deleting string from the hash table
-
-  void deleteString(string str) {
-    int index = hashFunction(str);
-    for(int i=0; i<size; i++){ //linear probing
-        if(hashArr[index] == str){
-            hashArr[index] = "-1";
-            cout << "String killed wihtout mercy" << endl;
-            return;
-        }
-        index++;
-    }
-    cout << "String not found on grounds" << endl;
-  }
 
   // Display strings
    void displayTable() {
@@ -126,31 +111,24 @@ public:
 };
 
 int main() {
-  HashTable* ht = new HashTable();
+  HashTable myHashTable;
 
   while (true) {
     cout << "What do you want?" << endl;
     cout << "1) insert string." << endl;
     cout << "2) display string." << endl;
-    cout << "3) delete string." << endl;
     cout << "Any other key to quit." << endl;
 
     int choice;
     cin >> choice;
-        string str;
 
     switch (choice) {
       case 1:
-        ht->insertString();
+        myHashTable.insertString();
         break;
       case 2:
         cout << "Displaying strings:" << endl;
-        ht->displayTable();
-        break;
-        case 3:
-        cout << "Enter string to delete: ";
-        cin >> str;
-        ht->deleteString(str);
+        myHashTable.displayTable();
         break;
       default:
         return 0;

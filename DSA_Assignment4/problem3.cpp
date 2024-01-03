@@ -19,7 +19,7 @@ public:
     int hashFunction(string str) {
         int hashVal = 0;
         for (int i = 0; i < str.length(); i++) {
-            int letter = str[i] - 96; // get char code
+            int letter = str[i] - 96; 
             hashVal = (hashVal * 27 + letter) % 11;
         }
         return hashVal;
@@ -59,34 +59,49 @@ public:
         this->insertion("Haseeb 8");
     }
 
-    void insertTestString() {
-        // load factor = 0.5 test
-        input5TestString();
-        displayTable();
-        searchTestString("Haseeb 0");
-        // load factor = 0.7 test
-        input7TestString();
-        displayTable();
-        searchTestString("Haseeb 0");
-        // load factor = 0.9 test
-        input9TestString();
-        displayTable();
-        searchTestString("Haseeb 0");
+void insertTestString() {
+    
+    input5TestString();
+    displayTable();
+    runSearchTests("Load Factor = 0.5");
+
+    
+    input7TestString();
+    displayTable();
+    runSearchTests("Load Factor = 0.7");
+
+    
+    input9TestString();
+    displayTable();
+    runSearchTests("Load Factor = 0.9");
+}
+
+void runSearchTests(const string& message) {
+    int totalTimeinMicroseconds = 0;
+    for (int i = 0; i < 10; i++) {
+        int randomIndex = rand() % 10;
+        string inputStr = "Haseeb " + to_string(randomIndex);
+
+        auto start = high_resolution_clock::now();
+        searchTestString(inputStr);
+        auto end = high_resolution_clock::now();
+
+        totalTimeinMicroseconds += duration_cast<microseconds>(end - start).count();
     }
 
+    cout << "Average time taken to search 10 random strings " << message << ": "
+         << totalTimeinMicroseconds / 10 << " microseconds" << endl;
+}
     void searchTestString(string str) {
-        //Start the timer without using the chrono std
-        auto start = high_resolution_clock::now();
+        
         
         int index;
         index = hashFunction(str);
         while (hashArr[index] != "-1") {
             if (hashArr[index] == str) {
                 cout << "Found string: " << str << endl;
-                //end the timer
-                auto end = high_resolution_clock::now();
-                auto duration = duration_cast<microseconds>(end - start);
-                cout << "Time taken: " << duration.count() << " microseconds" << endl;
+                
+              
                 return;
 
 
@@ -94,11 +109,8 @@ public:
             index = (index + 1) % 11;
         }
         cout << "String not found: " << str << endl;
-        //end the timer
-        auto end = high_resolution_clock::now();
-        auto duration = duration_cast<microseconds>(end - start);
-        cout << "Time taken: " << duration.count() << " microseconds" << endl;
-
+        
+ 
 
     }
 };
@@ -106,6 +118,6 @@ public:
 int main() {
     HashTable* ht = new HashTable();
     ht->insertTestString();
-    delete ht; // Don't forget to free the allocated memory
+    delete ht; 
     return 0;
 }

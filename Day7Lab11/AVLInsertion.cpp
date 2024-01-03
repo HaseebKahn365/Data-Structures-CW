@@ -9,7 +9,7 @@ class Node{
     Node* right;
     int height;
 
-    Node(int k): key(k), left(NULL), right(NULL), height(0){}
+    Node(int k): key(k), left(NULL), right(NULL), height(-1){}
 
 };
 
