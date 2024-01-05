@@ -110,8 +110,6 @@ void runSearchTests(const string& message) {
         }
         cout << "String not found: " << str << endl;
         
- 
-
     }
 };
 
