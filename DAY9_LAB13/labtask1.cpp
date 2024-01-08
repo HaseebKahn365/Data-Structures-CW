@@ -20,7 +20,7 @@ class HashTable{
     void insert(string str){
         int index = hashFunction(str);
 
-        cout<<index<<endl;
+        cout<<"The hashing function returned "<< index<<" for "<<str<<endl;
     }
 };
 

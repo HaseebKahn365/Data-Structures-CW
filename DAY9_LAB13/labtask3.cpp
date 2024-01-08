@@ -21,7 +21,7 @@ private:
         for (int i = 0; i < key.length(); ++i)
             sum += (key[i] * (i + 1));
 
-        return 2063 - sum % 2063;
+        return 2063 - sum % 17;
     }
 
 public:

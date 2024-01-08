@@ -1,0 +1,1 @@
+num* power(num, power--)
