@@ -12,13 +12,14 @@ bool shortFlag;
 
 bool checkFlag()
 {
-    if (message.length() < 1000)
-    {
-        shortFlag = true;
-        return true;
-    }
-    shortFlag = false;
-    return false;
+    return (message.length() < 1000);
+    // if (message.length() < 1000)
+    // {
+    //     shortFlag = true;
+    //     return true;
+    // }
+    // shortFlag = false;
+    // return false;
 }
 
 class AlphaSubstitutionCipher

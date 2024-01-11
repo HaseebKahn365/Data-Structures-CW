@@ -10,7 +10,7 @@ public:
         Node *right;
         int height;
 
-        Node(int k) : key(k), left(nullptr), right(nullptr), height(1) {}
+        Node(int k) : key(k), left(nullptr), right(nullptr), height(0) {}
     };
 
     AVLTree() : root(nullptr) {}
@@ -35,7 +35,7 @@ private:
     Node *root;
 
     int _height(Node *N) {
-        return (N == nullptr) ? 0 : N->height;
+        return (N == nullptr) ? -1 : N->height;
     }
 
     Node *newNode(int key) {
